@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import logoutImg from "assets/img/icons/spot-illustrations/45.png";
 import paths from "routes/paths";
 
-interface Props {
+interface IRouteProps {
   layout?: "simple" | "split" | "card";
-  titleTag?: keyof JSX.IntrinsicElements;
 }
 
 const loginPaths: { [key: string]: string } = {
@@ -16,7 +15,7 @@ const loginPaths: { [key: string]: string } = {
   card: paths.cardLogin,
 };
 
-const LogoutContent: FC<Props> = ({ layout = "simple" }) => {
+const LogoutContent: FC<IRouteProps> = ({ layout = "simple" }) => {
   return (
     <>
       <img
