@@ -7,6 +7,7 @@ import paths from "routes/paths";
 
 interface IRouteProps {
   layout?: "simple" | "split" | "card";
+  
 }
 
 const loginPaths: { [key: string]: string } = {
