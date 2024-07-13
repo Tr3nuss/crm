@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  IconButton,
-  Grid,
-  Box,
-  TextField,
-  Checkbox,
-  Button,
-} from "@mui/material";
-import Modal from "@mui/material/Modal";
-import RegistrationForm from "../RegistrationForm";
-import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import { Box, TextField, Checkbox, Button } from "@mui/material";
 // import { useAppContext } from "providers/AppProvider";
 
 const Example: React.FC = () => {
