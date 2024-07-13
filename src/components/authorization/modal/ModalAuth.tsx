@@ -1,48 +1,91 @@
 import React from "react";
-import { Modal, Typography, Button, IconButton, Grid } from "@mui/material";
+import {
+  Typography,
+  IconButton,
+  Grid,
+  Box,
+  TextField,
+  Checkbox,
+  Button,
+} from "@mui/material";
+import Modal from "@mui/material/Modal";
 import RegistrationForm from "../RegistrationForm";
 import CloseIcon from "@mui/icons-material/Close";
-import { useAppContext } from "providers/AppProvider";
+import { Link } from "react-router-dom";
+// import { useAppContext } from "providers/AppProvider";
 
 const Example: React.FC = () => {
-  const {
-    config: { openAuthModal },
-    setConfig,
-  } = useAppContext();
+  // const {
+  //   config: { openAuthModal },
+  //   setConfig,
+  // } = useAppContext();
 
-  const handleClose = () => {
-    setConfig("openAuthModal", false);
-  };
+  // const handleClose = () => {
+  //   setConfig("openAuthModal", false);
+  // };
 
   return (
-    <Modal open={openAuthModal} onClose={handleClose} className="mt-4">
-      <div className="bg-shape modal-shape-header position-relative px-4 py-2">
-        <div className="position-relative" data-bs-theme="light">
-          <Typography
-            variant="h4"
-            className="text-white"
-            id="authentication-modal-label"
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh", // Добавляем высоту, чтобы центрировать по вертикали на всю высоту экрана
+      }}
+    >
+      <Box sx={{ width: 500 }}>
+        <Box>
+          <Box sx={{ padding: "29px" }}>
+            <h2>Register</h2>
+            <p>Please create your free Falcon Account</p>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "25px",
+            flexDirection: "column",
+            padding: "29px",
+          }}
+        >
+          <TextField size="small" sx={{ width: 440 }} label="Name" />
+          <TextField size="small" sx={{ width: 440 }} label="Email Address" />
+          <Box sx={{ display: "flex", gap: "20px" }}>
+            <TextField size="small" sx={{ width: 210 }} label="Password" />
+            <TextField
+              size="small"
+              sx={{ width: 210 }}
+              label="Confirm Password"
+            />
+          </Box>
+          <Box>
+            <Checkbox /> I accept the <a href="#">Terms</a> and{" "}
+            <a href="#">Privacy policy</a>
+          </Box>
+          <Button
+            sx={{ textTransform: "none", background: "#2c7be5", color: "#fff" }}
           >
             Register
-          </Typography>
-          <Typography variant="body2" className="fs-10 text-white">
-            Please create your free Falcon account
-          </Typography>
-        </div>
-        <IconButton
-          color="inherit"
-          aria-label="close"
-          edge="end"
-          onClick={handleClose}
-          sx={{ position: "absolute", top: 0, right: 0, mt: 2, mr: 2 }}
-        >
-          <CloseIcon />
-        </IconButton>
-      </div>
-      <Grid container justifyContent="center" className="p-4">
-        <RegistrationForm hasLabel />
-      </Grid>
-    </Modal>
+          </Button>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+            }}
+          >
+            <div style={{ width: 155, height: 1, background: "#000" }}></div>
+            <p>or register with</p>
+            <div style={{ width: 155, height: 1, background: "#000" }}></div>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+            <Button sx={{ textTransform: "none" }}>Google</Button>
+            <Button sx={{ textTransform: "none" }}>Facebook</Button>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
