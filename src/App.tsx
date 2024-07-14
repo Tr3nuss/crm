@@ -8,12 +8,15 @@ import LockScreen from "./components/authorization/split/LockScreen";
 import { CardLockScreen } from "./components/authorization/card/CardLockScreen";
 import SimplePasswordReset from "./components/authorization/simple/SimplePasswordReset";
 import CardResetPassword from "./components/authorization/card/CardResetPassword";
+import SimpleConfirmMail from "./components/authorization/simple/SimpleConfirmMail";
+import CardConfirmMail from "./components/authorization/card/CardConfirmMail";
+import ConfirmMail from "./components/authorization/split/ConfirmMail";
 
 export const App: FC = () => {
   return (
     <>
       <div style={{ width: "100%", height: "100%" }}>
-        <PasswordReset />
+        <ConfirmMail />
       </div>
     </>
   );

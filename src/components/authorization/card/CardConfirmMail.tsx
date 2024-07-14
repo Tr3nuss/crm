@@ -1,30 +1,53 @@
-import { FC } from "react";
 import { Box, Button } from "@mui/material";
-import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
+import { FC } from "react";
 
-const SimpleConfirmMail: FC = () => {
+export const CardConfirmMail: FC = () => {
   return (
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
-        flexDirection: "column",
         justifyContent: "center",
         height: "100vh",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <img src={logo} alt="" width={150} height={150} />
-        <p style={{ fontSize: 40, color: "#2c7be5", fontWeight: 800 }}>
+      <Box
+        sx={{
+          width: 300,
+          height: 460,
+          background: "#2c7be5",
+          textAlign: "center",
+          borderTopLeftRadius: "5px",
+          borderBottomLeftRadius: "5px",
+        }}
+      >
+        <p
+          style={{
+            fontSize: 32,
+            fontWeight: 800,
+            color: "#fff",
+            paddingTop: "40px",
+          }}
+        >
           falcon
         </p>
-      </Box>
+        <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
+          With the power of Falcon,
+          <br /> you can now focus only on
+          <br /> functionaries for your digital
+          <br /> products while living the UI
+          <br /> desing of us!{" "}
+        </p>
 
+        <p style={{ fontSize: 14, color: "#fff", paddingTop: "140px" }}>
+          Read our terms and conditions
+        </p>
+      </Box>
       <Box
         sx={{
           width: 450,
-          height: 400,
+          height: 460,
           padding: "48px",
           bgcolor: "#fff",
           textAlign: "center",
@@ -32,7 +55,8 @@ const SimpleConfirmMail: FC = () => {
           alignItems: "center",
           flexDirection: "column",
           gap: "10px",
-          borderRadius: "5px",
+          borderTopRightRadius: "5px",
+          borderBottomRightRadius: "5px",
         }}
       >
         <img src={envelope} alt="envelope" width={100} height={93} />
@@ -72,4 +96,4 @@ const SimpleConfirmMail: FC = () => {
   );
 };
 
-export default SimpleConfirmMail;
+export default CardConfirmMail;
