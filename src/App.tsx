@@ -11,12 +11,15 @@ import CardResetPassword from "./components/authorization/card/CardResetPassword
 import SimpleConfirmMail from "./components/authorization/simple/SimpleConfirmMail";
 import CardConfirmMail from "./components/authorization/card/CardConfirmMail";
 import ConfirmMail from "./components/authorization/split/ConfirmMail";
+import SimpleForgetPassword from "./components/authorization/simple/SimpleForgetPassword";
+import { CardForgotPassword } from "./components/authorization/card/CardForgotPassword";
+import ForgetPassword from "./components/authorization/split/ForgetPassword";
 
 export const App: FC = () => {
   return (
     <>
       <div style={{ width: "100%", height: "100%" }}>
-        <ConfirmMail />
+        <ForgetPassword />
       </div>
     </>
   );
