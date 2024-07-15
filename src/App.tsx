@@ -14,12 +14,15 @@ import ConfirmMail from "./components/authorization/split/ConfirmMail";
 import SimpleForgetPassword from "./components/authorization/simple/SimpleForgetPassword";
 import { CardForgotPassword } from "./components/authorization/card/CardForgotPassword";
 import ForgetPassword from "./components/authorization/split/ForgetPassword";
+import SimpleLogout from "./components/authorization/simple/SimpleLogout";
+import CardLogout from "./components/authorization/card/CardLogout";
+import Logout from "./components/authorization/split/Logout";
 
 export const App: FC = () => {
   return (
     <>
       <div style={{ width: "100%", height: "100%" }}>
-        <ForgetPassword />
+        <Logout />
       </div>
     </>
   );
