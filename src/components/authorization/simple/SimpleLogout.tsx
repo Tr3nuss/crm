@@ -34,12 +34,12 @@ const SimpleLogout: FC = () => (
     >
       <img src={logoutImg} alt="logoutImg" height={93} width={100} />
       <p style={{ fontSize: 23, fontWeight: 500, paddingTop: "10px" }}>
-        See you again!
+        Встретимся снова!
       </p>
       <p style={{ color: "rgb(94, 110, 130)", fontSize: 16, fontWeight: 400 }}>
-        Thanks for using Falcon. You are
+        Спасибо, что пользуетесь falcon. Сейчас вы
         <br />
-        now succesfully signed out
+        успешно вышли из системы
       </p>
       <Button
         sx={{

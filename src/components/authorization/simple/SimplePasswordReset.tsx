@@ -37,7 +37,7 @@ export const SimplePasswordReset: FC = () => (
       }}
     >
       <p style={{ fontSize: 19, fontWeight: 500, color: "#344050" }}>
-        Reset new password
+        Сбросить пароль
       </p>
       <TextField
         size="small"
@@ -59,7 +59,7 @@ export const SimplePasswordReset: FC = () => (
           width: "100%",
         }}
       >
-        Set password
+        Установить пароль
       </Button>
     </Box>
   </Box>

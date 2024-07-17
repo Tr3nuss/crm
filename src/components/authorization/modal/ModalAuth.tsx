@@ -24,8 +24,8 @@ const Example: React.FC = () => {
       <Box sx={{ width: 500 }}>
         <Box>
           <Box sx={{ padding: "29px" }}>
-            <h2>Register</h2>
-            <p>Please create your free Falcon Account</p>
+            <h2>Регистрация</h2>
+            <p>Пожалуйста, создайте новый falcon аккаунт!</p>
           </Box>
         </Box>
         <Box
@@ -47,8 +47,8 @@ const Example: React.FC = () => {
             />
           </Box>
           <Box>
-            <Checkbox /> I accept the <a href="#">Terms</a> and{" "}
-            <a href="#">Privacy policy</a>
+            <Checkbox /> Я принимаю <a href="#">Условия</a> и{" "}
+            <a href="#">политику конфедициальности</a>
           </Box>
           <Button
             sx={{ textTransform: "none", background: "#2c7be5", color: "#fff" }}

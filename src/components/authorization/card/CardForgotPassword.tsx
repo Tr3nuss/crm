@@ -32,11 +32,9 @@ export const CardForgotPassword: FC = () => {
           falcon
         </p>
         <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
-          With the power of Falcon,
-          <br /> you can now focus only on
-          <br /> functionaries for your digital
-          <br /> products while living the UI
-          <br /> desing of us!{" "}
+          С помощью Falcon вы теперь можете сосредоточиться только на
+          функционале ваших цифровых продуктов, используя при этом наш
+          пользовательский интерфейс!
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "140px" }}>

@@ -53,7 +53,7 @@ export const SimpleLogin: FC = () => {
               justifyContent: "space-between",
             }}
           >
-            <p>Log in</p>
+            <p>Авторизоваться</p>
             <p
               style={{
                 color: "rgb(44, 123, 229)",
@@ -61,7 +61,7 @@ export const SimpleLogin: FC = () => {
                 fontSize: 13.5,
               }}
             >
-              or Create an account
+              или создать аккаунт
             </p>
           </Box>
           <TextField size="small" placeholder="Email address" />
@@ -77,7 +77,7 @@ export const SimpleLogin: FC = () => {
               justifyContent: "space-between",
             }}
           >
-            <Checkbox />{" "}
+            <Checkbox />
             <p
               style={{
                 paddingRight: "85px",
@@ -86,7 +86,7 @@ export const SimpleLogin: FC = () => {
                 fontWeight: 500,
               }}
             >
-              Remember me
+              Запомнить меня
             </p>
             <p
               style={{
@@ -95,7 +95,7 @@ export const SimpleLogin: FC = () => {
                 fontSize: 13.5,
               }}
             >
-              Forgot password?
+              Забыли пароль?
             </p>
           </Box>
           <Button
@@ -107,9 +107,9 @@ export const SimpleLogin: FC = () => {
               fontWeight: 400,
             }}
           >
-            Log in
+            Авторизоваться
           </Button>
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               alignItems: "center",
@@ -174,7 +174,7 @@ export const SimpleLogin: FC = () => {
             >
               facebook
             </Button>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </Box>

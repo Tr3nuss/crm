@@ -44,9 +44,8 @@ export const PasswordReset: FC = () => {
             gap: "25px",
           }}
         >
-          {" "}
           <p style={{ color: "344050", fontSize: 27, fontWeight: 500 }}>
-            Reset Password
+            Сбросить пароль
           </p>
           <TextField
             size="small"
@@ -69,7 +68,7 @@ export const PasswordReset: FC = () => {
               height: 36,
             }}
           >
-            Set password
+            Установить пароль
           </Button>
         </Box>
       </Box>

@@ -44,13 +44,14 @@ const SimpleConfirmMail: FC = () => {
             paddingTop: "20px",
           }}
         >
-          Please check your email!
+          Пожалуйста, проверьте почту!
         </p>
         <p
           style={{ color: "rgb(94, 110, 130)", fontSize: 16, fontWeight: 400 }}
         >
-          An email has been sent to xyz@abc.com
-          <br /> Please click on the included link to reset your password.
+          Письмо было отправлено на адрес xyz@abc.com
+          <br /> Пожалуйста, кликните на появившуюся ссылку, чтобы сбросить
+          пароль
         </p>
 
         <Button
@@ -65,7 +66,7 @@ const SimpleConfirmMail: FC = () => {
             marginTop: "20px",
           }}
         >
-          Return to login
+          Вернуться к авторизации
         </Button>
       </Box>
     </Box>

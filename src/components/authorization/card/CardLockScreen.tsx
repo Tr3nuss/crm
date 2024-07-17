@@ -64,7 +64,7 @@ export const CardLockScreen: FC = () => {
 
           <Box>
             <p style={{ fontSize: 21, fontWeight: 500, color: "#344050" }}>
-              Hi! Emma
+              Добрый день!
             </p>
             <p style={{ fontSize: 16, fontWeight: 300, color: "#5e6e82" }}>
               Enter your password <br />
@@ -93,7 +93,7 @@ export const CardLockScreen: FC = () => {
               fontWeight: 600,
             }}
           >
-            Login
+            Логин
           </Button>
         </Box>
       </Box>

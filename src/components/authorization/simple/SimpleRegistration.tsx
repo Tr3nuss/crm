@@ -53,7 +53,7 @@ export const SimpleRegistration = () => {
             }}
           >
             <p style={{ fontSize: 19, fontWeight: 500 }}>Регистрация</p>
-            <p style={{ fontSize: 13 }}>Уже есть аккаунт? Логин</p>
+            <p style={{ fontSize: 13 }}>Уже есть аккаунт? Авторизуйтесь</p>
           </Box>
 
           <TextField size="small" placeholder="Имя" sx={{ width: "100%" }} />

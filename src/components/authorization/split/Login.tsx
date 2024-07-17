@@ -52,9 +52,9 @@ export const Login: FC = () => {
               justifyContent: "space-between",
             }}
           >
-            <p>Login</p>
+            <p>Логин</p>
             <div>
-              <p>New User? Create account</p>
+              <p>Новый пользователь? Создать аккаунт</p>
             </div>
           </Box>
           <TextField
@@ -85,7 +85,7 @@ export const Login: FC = () => {
                 fontWeight: 500,
               }}
             >
-              Remember me
+              Запомнить меня
             </p>
             <p
               style={{
@@ -94,7 +94,7 @@ export const Login: FC = () => {
                 fontSize: 13.5,
               }}
             >
-              Forgot password?
+              Забыли пароль?
             </p>
           </Box>
           <Button
@@ -106,7 +106,7 @@ export const Login: FC = () => {
               fontWeight: 400,
             }}
           >
-            Log in
+            Авторизоваться
           </Button>
           {/* <Box
             sx={{

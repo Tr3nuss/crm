@@ -38,7 +38,7 @@ export const CardResetPassword: FC = () => {
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "140px" }}>
-          Read our terms and conditions
+          Ознакомьтесь с нашими положениями и условиями
         </p>
       </Box>
       <Box
@@ -53,7 +53,7 @@ export const CardResetPassword: FC = () => {
         }}
       >
         <p style={{ color: "344050", fontSize: 27, fontWeight: 500 }}>
-          Reset Password
+          Сбросить пароль
         </p>
         <TextField
           size="small"
@@ -76,7 +76,7 @@ export const CardResetPassword: FC = () => {
             height: 36,
           }}
         >
-          Set password
+          Установить пароль
         </Button>
       </Box>
     </Box>

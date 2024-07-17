@@ -57,8 +57,8 @@ const SimpleLockScreen: FC = () => {
             style={{ borderRadius: "50%", margin: "0 auto" }}
           />
 
-          <p style={{ fontSize: 21 }}>Hi, Emma Watson</p>
-          <p>Enter your password to access the admin</p>
+          <p style={{ fontSize: 21 }}>Добрый день!</p>
+          <p>Введите свой пароль для доступа к администратору</p>
 
           <Box
             sx={{
@@ -84,7 +84,7 @@ const SimpleLockScreen: FC = () => {
                 color: "#fff",
               }}
             >
-              Login
+              Авторизоваться
             </Button>
           </Box>
         </Box>

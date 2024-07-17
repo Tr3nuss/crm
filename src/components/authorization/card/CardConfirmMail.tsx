@@ -68,7 +68,7 @@ export const CardConfirmMail: FC = () => {
             paddingTop: "20px",
           }}
         >
-          Please check your email!
+          Пожалуйста, проверьте свою почту!
         </p>
         <p
           style={{ color: "rgb(94, 110, 130)", fontSize: 16, fontWeight: 400 }}
@@ -89,7 +89,7 @@ export const CardConfirmMail: FC = () => {
             marginTop: "20px",
           }}
         >
-          Return to login
+          Вернуться к авторизации
         </Button>
       </Box>
     </Box>

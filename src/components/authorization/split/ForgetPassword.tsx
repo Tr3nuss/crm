@@ -41,7 +41,7 @@ const ForgetPassword: FC = () => {
             borderRadius: "5px",
           }}
         >
-          <p style={{ fontSize: 19, fontWeight: 500 }}>Forgot your password?</p>
+          <p style={{ fontSize: 19, fontWeight: 500 }}>Забыли пароль?</p>
           <p
             style={{
               color: "rgb(94, 110, 130)",
@@ -49,7 +49,7 @@ const ForgetPassword: FC = () => {
               fontWeight: 400,
             }}
           >
-            Enter your email and we'll send you a reset link
+            Отправьте свою почту, и мы пришлем ссылку для сброса пароля
           </p>
           <TextField
             size="small"
@@ -67,7 +67,7 @@ const ForgetPassword: FC = () => {
               marginTop: "10px",
             }}
           >
-            Send reset link
+            Отправить ссылку для сброса
           </Button>
           <p
             style={{
@@ -77,7 +77,7 @@ const ForgetPassword: FC = () => {
               paddingTop: "20px",
             }}
           >
-            I can't recover my account using this page
+            Я не могу восстановить свою учетную запись с помощью этой страницы
           </p>
         </Box>
       </Box>

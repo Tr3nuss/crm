@@ -1,7 +1,5 @@
 import { FC } from "react";
 import { Box, TextField, Button } from "@mui/material";
-import Avatar from "components/common/Avatar";
-import Flex from "components/common/Flex";
 import team1 from "../../../assets/img/team/1.jpg";
 import bgImg from "../../../assets/img/generic/18.jpg";
 
@@ -57,8 +55,8 @@ const LockScreen: FC = () => {
             <Box>
               <p style={{ fontSize: 21, fontWeight: 600 }}>Hi! Emma</p>
               <p>
-                Enter your password
-                <br /> to access the admin.
+                Введите пароль, чтобы
+                <br /> получить доступ к админу
               </p>
             </Box>
           </Box>
@@ -83,7 +81,7 @@ const LockScreen: FC = () => {
                 fontWeight: 600,
               }}
             >
-              Login
+              Авторизоваться
             </Button>
           </Box>
         </Box>

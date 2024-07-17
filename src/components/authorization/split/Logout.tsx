@@ -44,7 +44,7 @@ export const Logout: FC = () => {
         >
           <img src={logoutImg} alt="logoutImg" height={93} width={100} />
           <p style={{ fontSize: 23, fontWeight: 500, paddingTop: "10px" }}>
-            See you again!
+            Встретимся снова!
           </p>
           <p
             style={{
@@ -53,9 +53,9 @@ export const Logout: FC = () => {
               fontWeight: 400,
             }}
           >
-            Thanks for using Falcon. You are
+            Спасибо, что пользуетесь falcon. Сейчас вы
             <br />
-            now succesfully signed out
+            успешно вышли из системы
           </p>
           <Button
             sx={{
@@ -69,7 +69,7 @@ export const Logout: FC = () => {
               marginTop: "20px",
             }}
           >
-            Return to login
+            Вернуться к авторизации
           </Button>
         </Box>
       </Box>

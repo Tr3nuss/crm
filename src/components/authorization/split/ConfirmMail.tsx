@@ -65,8 +65,9 @@ export const ConfirmMail: FC = () => {
               fontWeight: 400,
             }}
           >
-            An email has been sent to xyz@abc.com
-            <br /> Please click on the included link to reset your password.
+            Электронное письмо было отправлено по адресу xyz@abc.com
+            <br /> Пожалуйста, перейдите по указанной ссылке, чтобы сбросить
+            свой пароль.
           </p>
 
           <Button
@@ -81,7 +82,7 @@ export const ConfirmMail: FC = () => {
               marginTop: "20px",
             }}
           >
-            Return to login
+            Вернуться к авторизации
           </Button>
         </Box>
       </Box>
