@@ -20,12 +20,13 @@ import Logout from "./components/authorization/split/Logout";
 import SimpleLogin from "./components/authorization/simple/SimpleLogin";
 import Login from "./components/authorization/split/Login";
 import CardLogin from "./components/authorization/card/CardLogin";
+import CardRegistration from "./components/authorization/card/CardRegistration";
 
 export const App: FC = () => {
   return (
     <>
       <div style={{ width: "100%", height: "100%" }}>
-        <CardLogin />
+        <Registration />
       </div>
     </>
   );

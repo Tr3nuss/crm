@@ -1,126 +1,108 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Button, Checkbox, FormControlLabel, TextField, Typography } from '@mui/material';
-import { useTheme } from '@mui/system';
-import { styled } from '@mui/system';
+import { Box, Checkbox, TextField, Button } from "@mui/material";
+import React, { useState } from "react";
+import logo from "../../../assets/img/favicons/mstile-150x150.png";
 
-const StyledForm = styled('form')({
-  margin: '0 auto',
-  maxWidth: 400,
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1rem',
-});
-
-const RegistrationForm = ({ hasLabel }) => {
-  const theme = useTheme();
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    isAccepted: false,
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`Successfully registered as ${formData.name}`);
-  };
-
-  const handleFieldChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
+export const SimpleRegistration = () => {
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <TextField
-        label={hasLabel ? 'Name' : ''}
-        placeholder={!hasLabel ? 'Name' : ''}
-        value={formData.name}
-        name="name"
-        onChange={handleFieldChange}
-        type="text"
-      />
-
-      <TextField
-        label={hasLabel ? 'Email address' : ''}
-        placeholder={!hasLabel ? 'Email address' : ''}
-        value={formData.email}
-        name="email"
-        onChange={handleFieldChange}
-        type="text"
-      />
-
-      <TextField
-        label={hasLabel ? 'Password' : ''}
-        placeholder={!hasLabel ? 'Password' : ''}
-        value={formData.password}
-        name="password"
-        onChange={handleFieldChange}
-        type="password"
-      />
-
-      <TextField
-        label={hasLabel ? 'Confirm Password' : ''}
-        placeholder={!hasLabel ? 'Confirm Password' : ''}
-        value={formData.confirmPassword}
-        name="confirmPassword"
-        onChange={handleFieldChange}
-        type="password"
-      />
-
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={formData.isAccepted}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                isAccepted: e.target.checked,
-              })
-            }
-            name="isAccepted"
-          />
-        }
-        label={
-          <Typography>
-            I accept the <a href="#!">terms</a> and <a href="#!">privacy policy</a>
-          </Typography>
-        }
-      />
-
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        disabled={
-          !formData.name ||
-          !formData.email ||
-          !formData.password ||
-          !formData.confirmPassword ||
-          !formData.isAccepted
-        }
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <Box
+        sx={{
+          width: 475,
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
       >
-        Register
-      </Button>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img src={logo} alt="" width={150} height={150} />
+          <p style={{ fontSize: 40, color: "#2c7be5", fontWeight: 800 }}>
+            falcon
+          </p>
+        </Box>
+        <Box
+          sx={{
+            width: 450,
+            padding: "48px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: "10px",
+            background: "#fff",
+            borderRadius: "5px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <p style={{ fontSize: 19, fontWeight: 500 }}>Регистрация</p>
+            <p style={{ fontSize: 13 }}>Уже есть аккаунт? Логин</p>
+          </Box>
 
-      <Typography variant="subtitle1" align="center">
-        or register with
-      </Typography>
+          <TextField size="small" placeholder="Имя" sx={{ width: "100%" }} />
+          <TextField
+            size="small"
+            placeholder="Email-адрес"
+            sx={{ width: "100%" }}
+          />
+          <Box sx={{ display: "flex", gap: "10px" }}>
+            <TextField
+              size="small"
+              placeholder="Пароль"
+              sx={{ width: "50%" }}
+            />
+            <TextField
+              size="small"
+              placeholder="Подтвердить пароль"
+              sx={{ width: "50%" }}
+            />
+          </Box>
 
-      {/* Assuming SocialAuthButtons is another component */}
-      {/* <SocialAuthButtons /> */}
-    </StyledForm>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Checkbox />
+            <p style={{ fontSize: 13.5, fontWeight: 500 }}>
+              Я принимаю условия и политику конфедициальности
+            </p>
+          </Box>
+
+          <Button
+            sx={{
+              textTransform: "none",
+              bgcolor: "rgb(44, 123, 229)",
+              color: "#fff",
+              fontSize: 16,
+              fontWeight: 400,
+            }}
+          >
+            Регистрация
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
-RegistrationForm.propTypes = {
-  hasLabel: PropTypes.bool,
-};
-
-export default RegistrationForm;
+export default SimpleRegistration;
