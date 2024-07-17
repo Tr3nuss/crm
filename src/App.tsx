@@ -17,12 +17,15 @@ import ForgetPassword from "./components/authorization/split/ForgetPassword";
 import SimpleLogout from "./components/authorization/simple/SimpleLogout";
 import CardLogout from "./components/authorization/card/CardLogout";
 import Logout from "./components/authorization/split/Logout";
+import SimpleLogin from "./components/authorization/simple/SimpleLogin";
+import Login from "./components/authorization/split/Login";
+import CardLogin from "./components/authorization/card/CardLogin";
 
 export const App: FC = () => {
   return (
     <>
       <div style={{ width: "100%", height: "100%" }}>
-        <Logout />
+        <CardLogin />
       </div>
     </>
   );
