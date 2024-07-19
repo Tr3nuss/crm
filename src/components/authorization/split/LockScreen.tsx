@@ -1,12 +1,22 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { toast } from "react-toastify";
 import { Box, TextField, Button } from "@mui/material";
 import team1 from "../../../assets/img/team/1.jpg";
 import bgImg from "../../../assets/img/generic/18.jpg";
 
 const LockScreen: FC = () => {
+  const [password, setPassword] = useState<string>("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Logged in as Emma Watson`, {
+      theme: "colored",
+    });
+  };
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         gap: 35,
@@ -69,8 +79,15 @@ const LockScreen: FC = () => {
               gap: "10px",
             }}
           >
-            <TextField size="small" placeholder="Enter your password..." />
+            <TextField
+              size="small"
+              placeholder="Enter your password..."
+              type="password"
+              name="password"
+              onChange={({ EventTarget }) => setPassword(EventTarget.value)}
+            />
             <Button
+              type="submit"
               sx={{
                 textTransform: "none",
                 background: "#408BD3",
@@ -79,14 +96,16 @@ const LockScreen: FC = () => {
                 height: 36,
                 fontSize: "20px",
                 fontWeight: 600,
+                "&:disabled": { opacity: 0.5, color: "#fff" },
               }}
+              disabled={!password}
             >
               Авторизоваться
             </Button>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

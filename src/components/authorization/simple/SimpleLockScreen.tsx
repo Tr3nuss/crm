@@ -1,12 +1,22 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import team1 from "../../../assets/img/team/1.jpg";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
-import { Box, Avatar, TextField, Button } from "@mui/material";
+import { toast } from "react-toastify";
+import { Box, TextField, Button } from "@mui/material";
 
 const SimpleLockScreen: FC = () => {
+  const [password, setPassword] = useState<string>("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Logged in as Emma Watson`, {
+      theme: "colored",
+    });
+  };
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -71,9 +81,13 @@ const SimpleLockScreen: FC = () => {
             <TextField
               size="small"
               placeholder="Enter your password..."
+              name="password"
+              type="password"
               sx={{ width: 230 }}
+              onChange={({ EventTarget }) => setPassword(EventTarget.value)}
             />
             <Button
+              type="submit"
               sx={{
                 width: 85,
                 height: 40,
@@ -82,14 +96,16 @@ const SimpleLockScreen: FC = () => {
                 fontSize: 16,
                 fontWeight: 600,
                 color: "#fff",
+                "&:disabled": { opacity: 0.5, color: "#fff" },
               }}
+              disabled={!password}
             >
               Авторизоваться
             </Button>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

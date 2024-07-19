@@ -1,11 +1,22 @@
 import { Box, TextField, Button } from "@mui/material";
 import team1 from "../../../assets/img/team/1.jpg";
-import { FC } from "react";
+import { toast } from "react-toastify";
+import { FC, useState } from "react";
 
 export const CardLockScreen: FC = () => {
+  const [password, setPassword] = useState<string>("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Logged in as Emma Watson`, {
+      theme: "colored",
+    });
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -31,11 +42,9 @@ export const CardLockScreen: FC = () => {
           falcon
         </p>
         <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
-          With the power of Falcon,
-          <br /> you can now focus only on
-          <br /> functionaries for your digital
-          <br /> products while living the UI
-          <br /> desing of us!{" "}
+          С помощью Falcon вы теперь можете сосредоточиться только на
+          <br /> функционерах для своих цифровых продуктов, используя
+          пользовательский интерфейс, разработанный нами!
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "140px" }}>
@@ -81,8 +90,15 @@ export const CardLockScreen: FC = () => {
             gap: "10px",
           }}
         >
-          <TextField size="small" placeholder="Enter your password..." />
+          <TextField
+            size="small"
+            placeholder="Enter your password..."
+            name="password"
+            type="password"
+            onChange={({ EventTarget }) => setPassword(EventTarget.value)}
+          />
           <Button
+            type="submit"
             sx={{
               textTransform: "none",
               background: "#408BD3",
@@ -91,12 +107,14 @@ export const CardLockScreen: FC = () => {
               height: 36,
               fontSize: "20px",
               fontWeight: 600,
+              "&:disabled": { opacity: 0.5, color: "#fff" },
             }}
+            disabled={!password}
           >
             Логин
           </Button>
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
