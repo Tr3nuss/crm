@@ -2,15 +2,27 @@ import { Box, TextField, Button } from "@mui/material";
 import team1 from "../../../assets/img/team/1.jpg";
 import { toast } from "react-toastify";
 import { FC, useState } from "react";
+import axios from "axios";
 
 export const CardLockScreen: FC = () => {
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success(`Logged in as Emma Watson`, {
-      theme: "colored",
-    });
+    try {
+      const response = await axios.post("API", { password: password });
+
+      if (response.status === 200) {
+        toast.success(`Logged in`, {
+          theme: "colored",
+        });
+      } else {
+        toast.error("Failed to send reset link");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while sending the reset link");
+    }
   };
 
   return (
