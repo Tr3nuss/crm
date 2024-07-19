@@ -108,7 +108,7 @@ export const SimplePasswordReset: FC = () => {
             width: "100%",
             "&:disabled": { opacity: 0.5, color: "#fff" },
           }}
-          disabled={formData.newpassword !== formData.confirmpassword}
+          disabled={formData.password !== formData.confirmPassword}
         >
           Установить пароль
         </Button>
