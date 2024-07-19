@@ -155,6 +155,7 @@ const CardRegistration: FC = () => {
             formData.confirmpassword !== formData.password ||
             !formData.isAccepted
           }
+          type="submit"
         >
           Регистрация
         </Button>

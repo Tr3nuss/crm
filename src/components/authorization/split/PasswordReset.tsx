@@ -1,11 +1,37 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
+import { toast } from "react-toastify";
 import bgImg from "../../../assets/img/generic/20.jpg";
 
 export const PasswordReset: FC = () => {
+  interface IFormData {
+    newpassword: string;
+    confirmpassword: string;
+  }
+
+  const [formData, setFormData] = useState<IFormData>({
+    newpassword: "",
+    confirmpassword: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Login with your new password", {
+      theme: "colored",
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         gap: 35,
@@ -48,14 +74,18 @@ export const PasswordReset: FC = () => {
             Сбросить пароль
           </p>
           <TextField
+            name="newpassword"
             size="small"
             placeholder="New Password"
             sx={{ width: "100%" }}
+            onChange={handleFieldChange}
           />
           <TextField
+            name="confirmpassword"
             size="small"
             placeholder="Confirm Password"
             sx={{ width: "100%" }}
+            onChange={handleFieldChange}
           />
           <Button
             sx={{
@@ -66,13 +96,16 @@ export const PasswordReset: FC = () => {
               fontWeight: 600,
               width: "100%",
               height: 36,
+              "&:disabled": { opacity: 0.5, color: "#fff" },
             }}
+            type="submit"
+            disabled={formData.newpassword !== formData.confirmpassword}
           >
             Установить пароль
           </Button>
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

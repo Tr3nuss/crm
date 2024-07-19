@@ -145,6 +145,7 @@ export const Registration: FC = () => {
               formData.confirmpassword !== formData.password ||
               !formData.isAccepted
             }
+            type="submit"
           >
             Регистрация
           </Button>
