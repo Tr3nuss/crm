@@ -42,6 +42,7 @@ export const Login: FC = () => {
       toast.error("An error occurred while sending the reset link");
     }
   };
+  
   const handleFieldChange = (e) => {
     setFormData({
       ...formData,

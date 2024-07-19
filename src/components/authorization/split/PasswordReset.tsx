@@ -2,23 +2,42 @@ import { FC, useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import { toast } from "react-toastify";
 import bgImg from "../../../assets/img/generic/20.jpg";
+import axios from "axios";
 
 export const PasswordReset: FC = () => {
   interface IFormData {
-    newpassword: string;
-    confirmpassword: string;
+    password: string;
+    confirmPassword: string;
   }
 
   const [formData, setFormData] = useState<IFormData>({
-    newpassword: "",
-    confirmpassword: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Login with your new password", {
-      theme: "colored",
-    });
+    if (!formData.password || !formData.confirmPassword) {
+      toast.error("Please enter your email");
+      return;
+    }
+
+    try {
+      const response = await axios.post("API", {
+        password: formData.password,
+      });
+
+      if (response.status === 200) {
+        toast.success(`Logged in`, {
+          theme: "colored",
+        });
+      } else {
+        toast.error("Failed to send reset link");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while sending the reset link");
+    }
   };
 
   const handleFieldChange = (e) => {
@@ -99,7 +118,7 @@ export const PasswordReset: FC = () => {
               "&:disabled": { opacity: 0.5, color: "#fff" },
             }}
             type="submit"
-            disabled={formData.newpassword !== formData.confirmpassword}
+            disabled={formData.password !== formData.confirmPassword}
           >
             Установить пароль
           </Button>
