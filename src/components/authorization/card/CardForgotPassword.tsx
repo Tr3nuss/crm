@@ -1,10 +1,23 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { toast } from "react-toastify";
 import { Box, Button, TextField } from "@mui/material";
 
 export const CardForgotPassword: FC = () => {
+  const [email, setEmail] = useState<string>("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      toast.success(`An email is sent to ${email} with password reset link`, {
+        theme: "colored",
+      });
+    }
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -69,8 +82,12 @@ export const CardForgotPassword: FC = () => {
           size="small"
           sx={{ width: "100%", paddingTop: "32px" }}
           placeholder="Email address..."
+          type="email"
+          name="email"
+          onChange={({ EventTarget }) => setEmail(EventTarget.value)}
         />
         <Button
+          type="submit"
           sx={{
             textTransform: "none",
             color: "#fff",
@@ -79,7 +96,9 @@ export const CardForgotPassword: FC = () => {
             bgcolor: "rgb(44, 123, 229)",
             width: "100%",
             marginTop: "20px",
+            "&:disabled": { opacity: 0.5, color: "#fff" },
           }}
+          disabled={!email}
         >
           Send reset link
         </Button>
@@ -94,6 +113,6 @@ export const CardForgotPassword: FC = () => {
           I can't recover my account using this page
         </p>
       </Box>
-    </Box>
+    </form>
   );
 };

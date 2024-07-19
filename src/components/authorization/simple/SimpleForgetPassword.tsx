@@ -1,11 +1,24 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import { Box, TextField, Button } from "@mui/material";
 
 const SimpleForgetPassword: FC = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      toast.success(`An email is sent to ${email} with password reset link`, {
+        theme: "colored",
+      });
+    }
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -44,8 +57,12 @@ const SimpleForgetPassword: FC = () => {
           size="small"
           sx={{ width: "100%", paddingTop: "25px" }}
           placeholder="Email address..."
+          type="email"
+          name="email"
+          onChange={({ EventTarget }) => setEmail(EventTarget.value)}
         />
         <Button
+          type="submit"
           sx={{
             textTransform: "none",
             color: "#fff",
@@ -54,7 +71,9 @@ const SimpleForgetPassword: FC = () => {
             bgcolor: "rgb(44, 123, 229)",
             width: "100%",
             marginTop: "10px",
+            "&:disabled": { opacity: 0.5, color: "#fff" },
           }}
+          disabled={!email}
         >
           Send reset link
         </Button>
@@ -69,7 +88,7 @@ const SimpleForgetPassword: FC = () => {
           Я не могу восстановить свою учетную запись с помощью этой страницы
         </p>
       </Box>
-    </Box>
+    </form>
   );
 };
 
