@@ -1,12 +1,40 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
+import { FC, useState } from "react";
+import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 
 export const SimpleLogin: FC = () => {
+  interface IFormData {
+    email: string;
+    password: string;
+    remember: boolean;
+  }
+
+  const [formData, setFormData] = useState<IFormData>({
+    email: "",
+    password: "",
+    remember: false,
+  });
+
+  // Handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Logged in as ${formData.email}`, {
+      theme: "colored",
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -64,10 +92,17 @@ export const SimpleLogin: FC = () => {
               или создать аккаунт
             </p>
           </Box>
-          <TextField size="small" placeholder="Email address" />
           <TextField
             size="small"
+            placeholder="Email address"
+            name="email"
+            onChange={handleFieldChange}
+          />
+          <TextField
+            name="password"
+            size="small"
             placeholder="Password"
+            onChange={handleFieldChange}
             sx={{ paddingTop: "5px" }}
           />
           <Box
@@ -77,7 +112,15 @@ export const SimpleLogin: FC = () => {
               justifyContent: "space-between",
             }}
           >
-            <Checkbox />
+            <Checkbox
+              name="remember"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  remember: e.target.checked,
+                })
+              }
+            />
             <p
               style={{
                 paddingRight: "85px",
@@ -99,13 +142,18 @@ export const SimpleLogin: FC = () => {
             </p>
           </Box>
           <Button
+            type="submit"
             sx={{
               textTransform: "none",
               bgcolor: "rgb(44, 123, 229)",
               color: "#fff",
               fontSize: 16,
               fontWeight: 400,
+              "&:disabled": { opacity: 0.5, color: "#fff" },
             }}
+            disabled={
+              !formData.password || !formData.email || !formData.remember
+            }
           >
             Авторизоваться
           </Button>
@@ -177,7 +225,7 @@ export const SimpleLogin: FC = () => {
           </Box> */}
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

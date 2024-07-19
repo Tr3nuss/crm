@@ -1,10 +1,39 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Box, Button, TextField, Checkbox } from "@mui/material";
+import { toast } from "react-toastify";
 
 export const CardLogin: FC = () => {
+  interface IFormData {
+    email: string;
+    password: string;
+    remember: boolean;
+  }
+
+  const [formData, setFormData] = useState<IFormData>({
+    email: "",
+    password: "",
+    remember: false,
+  });
+
+  // Handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Logged in as ${formData.email}`, {
+      theme: "colored",
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -62,11 +91,13 @@ export const CardLogin: FC = () => {
           size="small"
           placeholder="Email адрес"
           style={{ paddingTop: "20px" }}
+          onChange={handleFieldChange}
         />
         <TextField
           size="small"
           placeholder="Пароль"
           sx={{ paddingTop: "30px" }}
+          onChange={handleFieldChange}
         />
         <Box
           sx={{
@@ -77,6 +108,13 @@ export const CardLogin: FC = () => {
           }}
         >
           <Checkbox
+            name="remember"
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                remember: e.target.checked,
+              })
+            }
             sx={{ appearance: "none", border: "none", outline: "none" }}
           />{" "}
           <p
@@ -100,6 +138,7 @@ export const CardLogin: FC = () => {
           </p>
         </Box>
         <Button
+          type="submit"
           sx={{
             textTransform: "none",
             bgcolor: "rgb(44, 123, 229)",
@@ -107,12 +146,14 @@ export const CardLogin: FC = () => {
             fontSize: 16,
             fontWeight: 400,
             marginTop: "15px",
+            "&:disabled": { opacity: 0.5, color: "#fff" },
           }}
+          disabled={!formData.password || !formData.email || !formData.remember}
         >
           Авторизоваться
         </Button>
       </Box>
-    </Box>
+    </form>
   );
 };
 

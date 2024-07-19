@@ -1,12 +1,40 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
+import { FC, useState } from "react";
 import bgImg from "../../../assets/img/generic/14.jpg";
+import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 
 export const Login: FC = () => {
+  interface IFormData {
+    email: string;
+    password: string;
+    remember: boolean;
+  }
+
+  const [formData, setFormData] = useState<IFormData>({
+    email: "",
+    password: "",
+    remember: false,
+  });
+
+  // Handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Logged in as ${formData.email}`, {
+      theme: "colored",
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         gap: 35,
@@ -61,11 +89,15 @@ export const Login: FC = () => {
             size="small"
             placeholder="Email address"
             style={{ paddingTop: "20px" }}
+            onChange={handleFieldChange}
+            name="email"
           />
           <TextField
             size="small"
             placeholder="Password"
             sx={{ paddingTop: "30px" }}
+            onChange={handleFieldChange}
+            name="password"
           />
           <Box
             sx={{
@@ -75,7 +107,14 @@ export const Login: FC = () => {
             }}
           >
             <Checkbox
+              name="remember"
               sx={{ appearance: "none", border: "none", outline: "none" }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  remember: e.target.checked,
+                })
+              }
             />{" "}
             <p
               style={{
@@ -98,13 +137,18 @@ export const Login: FC = () => {
             </p>
           </Box>
           <Button
+            type="submit"
             sx={{
               textTransform: "none",
               bgcolor: "rgb(44, 123, 229)",
               color: "#fff",
               fontSize: 16,
               fontWeight: 400,
+              "&:disabled": { opacity: 0.5, color: "#fff" },
             }}
+            disabled={
+              !formData.password || !formData.email || !formData.remember
+            }
           >
             Авторизоваться
           </Button>
@@ -176,7 +220,7 @@ export const Login: FC = () => {
           </Box> */}
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

@@ -133,7 +133,14 @@ const CardRegistration: FC = () => {
             alignItems: "center",
           }}
         >
-          <Checkbox />
+          <Checkbox
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                isAccepted: e.target.checked,
+              })
+            }
+          />
           <p style={{ fontSize: 13.5, fontWeight: 500 }}>
             Я принимаю условия и политику конфедициальности
           </p>
