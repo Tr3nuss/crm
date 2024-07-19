@@ -1,11 +1,42 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Box, Button, TextField, Checkbox } from "@mui/material";
 import bgImg from "../../../assets/img/generic/15.jpg";
+import { toast } from "react-toastify";
 
 export const Registration: FC = () => {
+  interface IFormData {
+    name: string;
+    email: string;
+    password: string;
+    confirmpassword: string;
+    isAccepted: boolean;
+  }
+
+  const [formData, setFormData] = useState<IFormData>({
+    name: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    isAccepted: false,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Successfully registered as ${formData.name}`, {
+      theme: "colored",
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         gap: 35,
@@ -55,22 +86,34 @@ export const Registration: FC = () => {
             <p>Уже пользователь? Логин</p>
           </Box>
 
-          <TextField size="small" placeholder="Имя" sx={{ width: "100%" }} />
+          <TextField
+            size="small"
+            placeholder="Имя"
+            sx={{ width: "100%" }}
+            type="text"
+            onChange={handleFieldChange}
+          />
           <TextField
             size="small"
             placeholder="Email-адрес"
             sx={{ width: "100%" }}
+            type="email"
+            onChange={handleFieldChange}
           />
           <Box sx={{ display: "flex", gap: "10px" }}>
             <TextField
               size="small"
               placeholder="Пароль"
               sx={{ width: "50%" }}
+              type="password"
+              onChange={handleFieldChange}
             />
             <TextField
               size="small"
               placeholder="Подтвердить пароль"
               sx={{ width: "50%" }}
+              type="password"
+              onChange={handleFieldChange}
             />
           </Box>
 
@@ -93,13 +136,21 @@ export const Registration: FC = () => {
               color: "#fff",
               fontSize: 16,
               fontWeight: 400,
+              "&:disabled": { opacity: 0.5, color: "#fff" },
             }}
+            disabled={
+              !formData.name ||
+              !formData.email ||
+              !formData.password ||
+              formData.confirmpassword !== formData.password ||
+              !formData.isAccepted
+            }
           >
             Регистрация
           </Button>
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

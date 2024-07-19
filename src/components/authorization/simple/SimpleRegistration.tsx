@@ -1,11 +1,43 @@
 import { Box, Checkbox, TextField, Button } from "@mui/material";
-import React, { useState } from "react";
+import { FC, useState } from "react";
+import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 
-export const SimpleRegistration = () => {
+export const SimpleRegistration: FC = () => {
+  interface IFormData {
+    name: string;
+    email: string;
+    password: string;
+    confirmpassword: string;
+    isAccepted: boolean;
+  }
+
+  const [formData, setFormData] = useState<IFormData>({
+    name: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    isAccepted: false,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success(`Successfully registered as ${formData.name}`, {
+      theme: "colored",
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <Box
-      sx={{
+    <form
+      onSubmit={handleSubmit}
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -56,21 +88,37 @@ export const SimpleRegistration = () => {
             <p style={{ fontSize: 13 }}>Уже есть аккаунт? Авторизуйтесь</p>
           </Box>
 
-          <TextField size="small" placeholder="Имя" sx={{ width: "100%" }} />
+          <TextField
+            size="small"
+            placeholder="Имя"
+            name="name"
+            type="text"
+            onChange={handleFieldChange}
+            sx={{ width: "100%" }}
+          />
           <TextField
             size="small"
             placeholder="Email-адрес"
+            name="email"
+            type="email"
+            onChange={handleFieldChange}
             sx={{ width: "100%" }}
           />
           <Box sx={{ display: "flex", gap: "10px" }}>
             <TextField
               size="small"
               placeholder="Пароль"
+              name="password"
+              type="password"
+              onChange={handleFieldChange}
               sx={{ width: "50%" }}
             />
             <TextField
               size="small"
               placeholder="Подтвердить пароль"
+              name="confirmpassword"
+              type="password"
+              onChange={handleFieldChange}
               sx={{ width: "50%" }}
             />
           </Box>
@@ -82,26 +130,40 @@ export const SimpleRegistration = () => {
               justifyContent: "space-between",
             }}
           >
-            <Checkbox />
+            <Checkbox
+              name="isAccepted"
+              onChange={(e) =>
+                setFormData({ ...formData, isAccepted: e.target.checked })
+              }
+            />
             <p style={{ fontSize: 13.5, fontWeight: 500 }}>
               Я принимаю условия и политику конфедициальности
             </p>
           </Box>
 
           <Button
+            type="submit"
             sx={{
               textTransform: "none",
               bgcolor: "rgb(44, 123, 229)",
               color: "#fff",
               fontSize: 16,
               fontWeight: 400,
+              "&:disabled": { opacity: "0.5", color: "#fff" },
             }}
+            disabled={
+              !formData.name ||
+              !formData.email ||
+              !formData.password ||
+              formData.confirmpassword !== formData.password ||
+              !formData.isAccepted
+            }
           >
             Регистрация
           </Button>
         </Box>
       </Box>
-    </Box>
+    </form>
   );
 };
 

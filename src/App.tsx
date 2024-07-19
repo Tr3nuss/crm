@@ -26,7 +26,7 @@ export const App: FC = () => {
   return (
     <>
       <div style={{ width: "100%", height: "100%" }}>
-        <Registration />
+        <SimpleRegistration/>
       </div>
     </>
   );
