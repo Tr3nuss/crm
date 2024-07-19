@@ -28,6 +28,7 @@ export const CardForgotPassword: FC = () => {
       toast.error("An error occurred while sending the reset link");
     }
   };
+  
   return (
     <form
       onSubmit={handleSubmit}

@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import bgImg from "../../../assets/img/generic/14.jpg";
 import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
+import axios from "axios";
 
 export const Login: FC = () => {
   interface IFormData {
@@ -16,14 +17,31 @@ export const Login: FC = () => {
     remember: false,
   });
 
-  // Handler
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success(`Logged in as ${formData.email}`, {
-      theme: "colored",
-    });
-  };
+    if (!formData.email || !formData.password) {
+      toast.error("Please enter your email");
+      return;
+    }
 
+    try {
+      const response = await axios.post("API", {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (response.status === 200) {
+        toast.success(`Logged in`, {
+          theme: "colored",
+        });
+      } else {
+        toast.error("Failed to send reset link");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while sending the reset link");
+    }
+  };
   const handleFieldChange = (e) => {
     setFormData({
       ...formData,
