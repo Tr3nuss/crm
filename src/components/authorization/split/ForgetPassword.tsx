@@ -2,18 +2,34 @@ import { FC, useState } from "react";
 import { toast } from "react-toastify";
 import { Box, Button, TextField } from "@mui/material";
 import bgImg from "../../../assets/img/generic/17.jpg";
+import axios from "axios";
 
 const ForgetPassword: FC = () => {
   const [email, setEmail] = useState<string>("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      toast.success(`An email is sent to ${email} with password reset link`, {
-        theme: "colored",
-      });
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+
+    try {
+      const response = await axios.post("API", { email: email });
+
+      if (response.status === 200) {
+        toast.success(`An email is sent to ${email} with password reset link`, {
+          theme: "colored",
+        });
+      } else {
+        toast.error("Failed to send reset link");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while sending the reset link");
     }
   };
+
   return (
     <form
       onSubmit={handleSubmit}
