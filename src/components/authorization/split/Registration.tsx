@@ -112,7 +112,7 @@ export const Registration: FC = () => {
           >
             <p style={{ fontSize: 28, fontWeight: 500 }}>Регистрация</p>
             <p>
-              Вы уже пользователь? <Link to={routePath.splitLogin}>Логин</Link>
+              Вы уже пользователь? <Link to='split_login'>Логин</Link>
             </p>
           </Box>
 

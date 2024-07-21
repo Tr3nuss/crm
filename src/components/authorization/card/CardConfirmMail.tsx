@@ -2,7 +2,6 @@ import { Box, Button } from "@mui/material";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
 
 export const CardConfirmMail: FC = () => {
   return (
@@ -80,7 +79,7 @@ export const CardConfirmMail: FC = () => {
 
         <Button
           as={Link}
-          to={routePath.cardLogin}
+          to="/card_login"
           sx={{
             textTransform: "none",
             width: 150,

@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import { FC, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
 
 const CardRegistration: FC = () => {
   interface IFormData {
@@ -99,7 +98,7 @@ const CardRegistration: FC = () => {
           <p style={{ color: "#fff" }}>Уже есть аккаунт?</p>
           <Button
             as={Link}
-            to={routePath.cardLogin}
+            to='/card_login'
             sx={{
               textTransform: "none",
               color: "#fff",

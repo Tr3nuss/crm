@@ -4,7 +4,6 @@ import { Box, TextField, Button, Checkbox } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
 
 export const SimpleLogin: FC = () => {
   interface IFormData {
@@ -110,7 +109,7 @@ export const SimpleLogin: FC = () => {
                 fontSize: 13.5,
               }}
             >
-              или создать аккаунт
+              или <Link to="simple_register">создать аккаунт</Link>
             </p>
           </Box>
           <TextField
@@ -153,7 +152,7 @@ export const SimpleLogin: FC = () => {
               Запомнить меня
             </p>
             <Link
-              to={routePath.simpleForgetPassword}
+              to="simple_forget_password"
               style={{
                 color: "rgb(44, 123, 229)",
                 fontWeight: 500,

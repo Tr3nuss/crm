@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import SimpleRegistration from "../components/authorization/simple/SimpleRegistration";
-import routePath from "./routePath";
 import SimpleLogin from "../components/authorization/simple/SimpleLogin";
 import Login from "../components/authorization/split/Login";
 import Registration from "../components/authorization/split/Registration";
@@ -15,24 +14,18 @@ export const RouteNavigation: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<CardRegistration />} />
-      <Route path={routePath.simpleLogin} element={<SimpleLogin />} />
-      <Route path={routePath.simpleRegister} element={<SimpleRegistration />} />
-      <Route path={routePath.splitLogin} element={<Login />} />
-      <Route path={routePath.splitRegister} element={<Registration />} />
-      <Route path={routePath.cardLogin} element={<CardLogin />} />
-      <Route path={routePath.cardRegister} element={<CardRegistration />} />
+      <Route path="/simple_login" element={<SimpleLogin />} />
+      <Route path="/simple_register" element={<SimpleRegistration />} />
+      <Route path="/split_login" element={<Login />} />
+      <Route path="/split_register" element={<Registration />} />
+      <Route path="/card_login" element={<CardLogin />} />
+      <Route path="card_register" element={<CardRegistration />} />
       <Route
-        path={routePath.simpleForgetPassword}
+        path="/simple_forget_password"
         element={<SimpleForgetPassword />}
       />
-      <Route
-        path={routePath.splitForgetPassword}
-        element={<ForgetPassword />}
-      />
-      <Route
-        path={routePath.cardForgetPassword}
-        element={<CardForgotPassword />}
-      />
+      <Route path="/split_forget_password" element={<ForgetPassword />} />
+      <Route path="/card_forget_password" element={<CardForgotPassword />} />
     </Routes>
   );
 };

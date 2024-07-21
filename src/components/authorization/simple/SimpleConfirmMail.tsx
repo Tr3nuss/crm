@@ -3,7 +3,7 @@ import { Box, Button } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
+
 
 const SimpleConfirmMail: FC = () => {
   return (
@@ -58,7 +58,7 @@ const SimpleConfirmMail: FC = () => {
 
         <Button
           as={Link}
-          to={routePath.simpleLogin}
+          to='simple_login'
           sx={{
             textTransform: "none",
             width: 150,

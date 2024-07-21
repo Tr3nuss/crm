@@ -3,7 +3,7 @@ import { Box, Button, TextField, Checkbox } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
+
 
 export const CardLogin: FC = () => {
   interface IFormData {
@@ -90,7 +90,7 @@ export const CardLogin: FC = () => {
 
         <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
           Нет аккаунта?
-          <br /> Начать!
+          <br /> <Link to="/card_register">Начать!</Link>
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "50px" }}>
@@ -149,7 +149,7 @@ export const CardLogin: FC = () => {
             Запомнить меня
           </p>
           <Link
-            to={routePath.cardForgetPassword}
+            to='/card_forget_password'
             style={{
               color: "rgb(44, 123, 229)",
               fontWeight: 500,

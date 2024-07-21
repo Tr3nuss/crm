@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
+
 
 export const Login: FC = () => {
   interface IFormData {
@@ -105,7 +105,7 @@ export const Login: FC = () => {
             <div>
               <p>
                 Новый пользователь?{" "}
-                <Link to={routePath.splitRegister}>Создать аккаунт</Link>
+                <Link to='split_register'>Создать аккаунт</Link>
               </p>
             </div>
           </Box>
@@ -151,7 +151,7 @@ export const Login: FC = () => {
               Запомнить меня
             </p>
             <Link
-              to={routePath.splitForgetPassword}
+              to='split_forget_password'
               style={{
                 color: "rgb(44, 123, 229)",
                 fontWeight: 500,
