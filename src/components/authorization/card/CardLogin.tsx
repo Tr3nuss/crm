@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 import { Box, Button, TextField, Checkbox } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 export const CardLogin: FC = () => {
   interface IFormData {
@@ -146,7 +148,8 @@ export const CardLogin: FC = () => {
           >
             Запомнить меня
           </p>
-          <p
+          <Link
+            to={routePath.cardForgetPassword}
             style={{
               color: "rgb(44, 123, 229)",
               fontWeight: 500,
@@ -154,7 +157,7 @@ export const CardLogin: FC = () => {
             }}
           >
             Забыли пароль?
-          </p>
+          </Link>
         </Box>
         <Button
           type="submit"

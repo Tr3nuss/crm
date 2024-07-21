@@ -2,6 +2,8 @@ import { FC } from "react";
 import bgImg from "../../../assets/img/generic/16.jpg";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
 import { Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 export const ConfirmMail: FC = () => {
   return (
@@ -71,6 +73,8 @@ export const ConfirmMail: FC = () => {
           </p>
 
           <Button
+            as={Link}
+            to={routePath.splitLogin}
             sx={{
               textTransform: "none",
               width: 150,

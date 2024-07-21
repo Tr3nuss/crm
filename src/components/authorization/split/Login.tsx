@@ -3,6 +3,8 @@ import bgImg from "../../../assets/img/generic/14.jpg";
 import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 export const Login: FC = () => {
   interface IFormData {
@@ -42,7 +44,7 @@ export const Login: FC = () => {
       toast.error("An error occurred while sending the reset link");
     }
   };
-  
+
   const handleFieldChange = (e) => {
     setFormData({
       ...formData,
@@ -101,7 +103,10 @@ export const Login: FC = () => {
           >
             <p>Логин</p>
             <div>
-              <p>Новый пользователь? Создать аккаунт</p>
+              <p>
+                Новый пользователь?{" "}
+                <Link to={routePath.splitRegister}>Создать аккаунт</Link>
+              </p>
             </div>
           </Box>
           <TextField
@@ -145,7 +150,8 @@ export const Login: FC = () => {
             >
               Запомнить меня
             </p>
-            <p
+            <Link
+              to={routePath.splitForgetPassword}
               style={{
                 color: "rgb(44, 123, 229)",
                 fontWeight: 500,
@@ -153,7 +159,7 @@ export const Login: FC = () => {
               }}
             >
               Забыли пароль?
-            </p>
+            </Link>
           </Box>
           <Button
             type="submit"

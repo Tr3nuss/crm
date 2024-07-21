@@ -2,8 +2,10 @@ import { FC } from "react";
 import logoutImg from "../../../assets/img/icons/spot-illustrations/45.png";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import { Box, Button } from "@mui/material";
+import routePath from "../../../routes/routePath";
+import { Link } from "react-router-dom";
 
-const SimpleLogout: FC = () => (
+export const SimpleLogout: FC = () => (
   <Box
     sx={{
       display: "flex",
@@ -42,6 +44,8 @@ const SimpleLogout: FC = () => (
         успешно вышли из системы
       </p>
       <Button
+        as={Link}
+        to={routePath.simpleLogin}
         sx={{
           textTransform: "none",
           width: 150,
@@ -53,7 +57,7 @@ const SimpleLogout: FC = () => (
           marginTop: "20px",
         }}
       >
-        Return to login
+        Вернуться к авторизации
       </Button>
     </Box>
   </Box>

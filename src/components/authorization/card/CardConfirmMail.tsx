@@ -1,6 +1,8 @@
 import { Box, Button } from "@mui/material";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
 import { FC } from "react";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 export const CardConfirmMail: FC = () => {
   return (
@@ -33,15 +35,13 @@ export const CardConfirmMail: FC = () => {
           falcon
         </p>
         <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
-          With the power of Falcon,
-          <br /> you can now focus only on
-          <br /> functionaries for your digital
-          <br /> products while living the UI
-          <br /> desing of us!{" "}
+          С помощью Falcon вы теперь можете сосредоточиться только на
+          <br /> функционерах для своих цифровых продуктов, используя
+          пользовательский интерфейс, разработанный нами!
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "140px" }}>
-          Read our terms and conditions
+          Ознакомьтесь с нашими положениями и условиями
         </p>
       </Box>
       <Box
@@ -73,11 +73,14 @@ export const CardConfirmMail: FC = () => {
         <p
           style={{ color: "rgb(94, 110, 130)", fontSize: 16, fontWeight: 400 }}
         >
-          An email has been sent to xyz@abc.com
-          <br /> Please click on the included link to reset your password.
+          Электронное письмо было отправлено по адресу xyz@abc.com
+          <br /> Пожалуйста, перейдите по указанной ссылке, чтобы сбросить свой
+          пароль.
         </p>
 
         <Button
+          as={Link}
+          to={routePath.cardLogin}
           sx={{
             textTransform: "none",
             width: 150,

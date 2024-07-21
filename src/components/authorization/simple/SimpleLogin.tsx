@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 export const SimpleLogin: FC = () => {
   interface IFormData {
@@ -150,7 +152,8 @@ export const SimpleLogin: FC = () => {
             >
               Запомнить меня
             </p>
-            <p
+            <Link
+              to={routePath.simpleForgetPassword}
               style={{
                 color: "rgb(44, 123, 229)",
                 fontWeight: 500,
@@ -158,7 +161,7 @@ export const SimpleLogin: FC = () => {
               }}
             >
               Забыли пароль?
-            </p>
+            </Link>
           </Box>
           <Button
             type="submit"
