@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-
 export const CardLogin: FC = () => {
   interface IFormData {
     email: string;
@@ -90,7 +89,7 @@ export const CardLogin: FC = () => {
 
         <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
           Нет аккаунта?
-          <br /> <Link to="/card_register">Начать!</Link>
+          <br /> <Link to="card_register">Начать!</Link>
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "50px" }}>
@@ -110,12 +109,16 @@ export const CardLogin: FC = () => {
         <p style={{ fontSize: 28, fontWeight: 500 }}>Вход в учетную запись</p>
         <TextField
           size="small"
+          name="email"
+          type="email"
           placeholder="Email адрес"
           style={{ paddingTop: "20px" }}
           onChange={handleFieldChange}
         />
         <TextField
           size="small"
+          name="password"
+          type="password"
           placeholder="Пароль"
           sx={{ paddingTop: "30px" }}
           onChange={handleFieldChange}
@@ -149,7 +152,7 @@ export const CardLogin: FC = () => {
             Запомнить меня
           </p>
           <Link
-            to='/card_forget_password'
+            to="/card_forget_password"
             style={{
               color: "rgb(44, 123, 229)",
               fontWeight: 500,

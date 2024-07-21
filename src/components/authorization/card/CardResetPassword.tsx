@@ -100,11 +100,15 @@ export const CardResetPassword: FC = () => {
         </p>
         <TextField
           size="small"
+          type="password"
+          name="password"
           placeholder="New Password"
           sx={{ width: "100%" }}
           onChange={handleFieldChange}
         />
         <TextField
+          type="password"
+          name="password"
           size="small"
           placeholder="Confirm Password"
           sx={{ width: "100%" }}

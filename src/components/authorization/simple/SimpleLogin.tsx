@@ -116,11 +116,13 @@ export const SimpleLogin: FC = () => {
             size="small"
             placeholder="Email address"
             name="email"
+            type="email"
             onChange={handleFieldChange}
           />
           <TextField
             name="password"
             size="small"
+            type="password"
             placeholder="Password"
             onChange={handleFieldChange}
             sx={{ paddingTop: "5px" }}

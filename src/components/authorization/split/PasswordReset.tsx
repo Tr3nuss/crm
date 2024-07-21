@@ -93,14 +93,14 @@ export const PasswordReset: FC = () => {
             Сбросить пароль
           </p>
           <TextField
-            name="newpassword"
+            name="password"
             size="small"
             placeholder="New Password"
             sx={{ width: "100%" }}
             onChange={handleFieldChange}
           />
           <TextField
-            name="confirmpassword"
+            name="confirmPassword"
             size="small"
             placeholder="Confirm Password"
             sx={{ width: "100%" }}

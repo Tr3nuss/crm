@@ -87,12 +87,16 @@ export const SimplePasswordReset: FC = () => {
         </p>
         <TextField
           size="small"
+          type="password"
+          name="password"
           placeholder="New Password"
           sx={{ width: "100%" }}
           onChange={handleFieldChange}
         />
         <TextField
           size="small"
+          type="password"
+          name="confirmPassword"
           placeholder="Confirm Password"
           sx={{ width: "100%" }}
           onChange={handleFieldChange}

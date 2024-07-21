@@ -145,7 +145,7 @@ export const SimpleRegistration: FC = () => {
             <TextField
               size="small"
               placeholder="Подтвердить пароль"
-              name="confirmpassword"
+              name="confirmPassword"
               type="password"
               onChange={handleFieldChange}
               sx={{ width: "50%" }}

@@ -98,7 +98,7 @@ const CardRegistration: FC = () => {
           <p style={{ color: "#fff" }}>Уже есть аккаунт?</p>
           <Button
             as={Link}
-            to='/card_login'
+            to="/card_login"
             sx={{
               textTransform: "none",
               color: "#fff",
@@ -131,6 +131,7 @@ const CardRegistration: FC = () => {
           placeholder="Имя"
           sx={{ width: "100%" }}
           type="text"
+          name="name"
           onChange={handleFieldChange}
         />
         <TextField
@@ -146,6 +147,7 @@ const CardRegistration: FC = () => {
             placeholder="Пароль"
             sx={{ width: "50%" }}
             type="password"
+            name="password"
             onChange={handleFieldChange}
           />
           <TextField
@@ -153,6 +155,7 @@ const CardRegistration: FC = () => {
             placeholder="Подтвердить пароль"
             sx={{ width: "50%" }}
             type="password"
+            name="confirmPassword"
             onChange={handleFieldChange}
           />
         </Box>
