@@ -2,13 +2,14 @@ import { Box, Checkbox, TextField, Button } from "@mui/material";
 import { FC, useState } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
+import axios from "axios";
 
 export const SimpleRegistration: FC = () => {
   interface IFormData {
     name: string;
     email: string;
     password: string;
-    confirmpassword: string;
+    confirmPassword: string;
     isAccepted: boolean;
   }
 
@@ -16,15 +17,40 @@ export const SimpleRegistration: FC = () => {
     name: "",
     email: "",
     password: "",
-    confirmpassword: "",
+    confirmPassword: "",
     isAccepted: false,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success(`Successfully registered as ${formData.name}`, {
-      theme: "colored",
-    });
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.password ||
+      formData.password !== formData.confirmPassword
+    ) {
+      toast.error("Please check the entered data");
+      return;
+    }
+
+    try {
+      const response = await axios.post("API", {
+        name: formData.name,
+        email: formData.email,
+        passowrd: formData.password,
+      });
+
+      if (response.status === 200) {
+        toast.success(`Успешно зарегистрировано на ${formData.name}`);
+      } else {
+        toast.error(
+          "Не удалось зарегистрироваться. Пожалуйста, проверьте входные данные"
+        );
+      }
+    } catch (e) {
+      console.error(e);
+      toast.error("Ошибка регистрации");
+    }
   };
 
   const handleFieldChange = (e) => {
@@ -155,7 +181,7 @@ export const SimpleRegistration: FC = () => {
               !formData.name ||
               !formData.email ||
               !formData.password ||
-              formData.confirmpassword !== formData.password ||
+              formData.confirmPassword !== formData.password ||
               !formData.isAccepted
             }
           >

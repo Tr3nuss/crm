@@ -1,13 +1,14 @@
 import { Box, Button, TextField, Checkbox } from "@mui/material";
 import { toast } from "react-toastify";
 import { FC, useState } from "react";
+import axios from "axios";
 
 const CardRegistration: FC = () => {
   interface IFormData {
     name: string;
     email: string;
     password: string;
-    confirmpassword: string;
+    confirmPassword: string;
     isAccepted: boolean;
   }
 
@@ -15,15 +16,40 @@ const CardRegistration: FC = () => {
     name: "",
     email: "",
     password: "",
-    confirmpassword: "",
+    confirmPassword: "",
     isAccepted: false,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success(`Successfully registered as ${formData.name}`, {
-      theme: "colored",
-    });
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.password ||
+      formData.password !== formData.confirmPassword
+    ) {
+      toast.error("Please check the entered data");
+      return;
+    }
+
+    try {
+      const response = await axios.post("API", {
+        name: formData.name,
+        email: formData.email,
+        passowrd: formData.password,
+      });
+
+      if (response.status === 200) {
+        toast.success(`Успешно зарегистрировано на ${formData.name}`);
+      } else {
+        toast.error(
+          "Не удалось зарегистрироваться. Пожалуйста, проверьте входные данные"
+        );
+      }
+    } catch (e) {
+      console.error(e);
+      toast.error("Ошибка регистрации");
+    }
   };
 
   const handleFieldChange = (e) => {
@@ -159,7 +185,7 @@ const CardRegistration: FC = () => {
             !formData.name ||
             !formData.email ||
             !formData.password ||
-            formData.confirmpassword !== formData.password ||
+            formData.confirmPassword !== formData.password ||
             !formData.isAccepted
           }
           type="submit"
