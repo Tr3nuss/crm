@@ -18,7 +18,7 @@ export const PasswordReset: FC = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.password || !formData.confirmPassword) {
-      toast.error("Please enter your email");
+      toast.error("Пожалуйста, введите ваш email");
       return;
     }
 
@@ -28,15 +28,15 @@ export const PasswordReset: FC = () => {
       });
 
       if (response.status === 200) {
-        toast.success(`Logged in`, {
+        toast.success(`Вы вошли в систему`, {
           theme: "colored",
         });
       } else {
-        toast.error("Failed to send reset link");
+        toast.error("Не удалось отправить ссылку для восстановления");
       }
     } catch (error) {
       console.error(error);
-      toast.error("An error occurred while sending the reset link");
+      toast.error("При отправке ссылки для сброса произошла ошибка");
     }
   };
 

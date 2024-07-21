@@ -2,6 +2,8 @@ import { Box, Button, TextField, Checkbox } from "@mui/material";
 import { toast } from "react-toastify";
 import { FC, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 const CardRegistration: FC = () => {
   interface IFormData {
@@ -96,6 +98,8 @@ const CardRegistration: FC = () => {
         <Box sx={{ paddingTop: "70px" }}>
           <p style={{ color: "#fff" }}>Уже есть аккаунт?</p>
           <Button
+            as={Link}
+            to={routePath.cardLogin}
             sx={{
               textTransform: "none",
               color: "#fff",
@@ -104,6 +108,7 @@ const CardRegistration: FC = () => {
               border: "1px solid #fff",
               marginTop: "5px",
               "&:hover": { bgcolor: "#fff", color: "#000" },
+              textDecoration: "none",
             }}
           >
             Авторизоваться

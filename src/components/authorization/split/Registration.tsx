@@ -3,6 +3,8 @@ import { Box, Button, TextField, Checkbox } from "@mui/material";
 import bgImg from "../../../assets/img/generic/15.jpg";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import routePath, { rootPaths } from "../../../routes/routePath";
 
 export const Registration: FC = () => {
   interface IFormData {
@@ -109,7 +111,9 @@ export const Registration: FC = () => {
             }}
           >
             <p style={{ fontSize: 28, fontWeight: 500 }}>Регистрация</p>
-            <p>Уже пользователь? Логин</p>
+            <p>
+              Вы уже пользователь? <Link to={routePath.splitLogin}>Логин</Link>
+            </p>
           </Box>
 
           <TextField
@@ -161,7 +165,8 @@ export const Registration: FC = () => {
               }
             />
             <p style={{ fontSize: 13.5, fontWeight: 500 }}>
-              Я принимаю условия и политику конфедициальности
+              Я принимаю <Link to="*">Условия</Link> и{" "}
+              <Link to="*">Политику конфедициальности</Link>
             </p>
           </Box>
 

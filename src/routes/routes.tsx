@@ -8,10 +8,10 @@ import Registration from "../components/authorization/split/Registration";
 import CardLogin from "../components/authorization/card/CardLogin";
 import CardRegistration from "../components/authorization/card/CardRegistration";
 
-export const RouteNav: FC = () => {
+export const RouteNavigation: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<SimpleRegistration />} />
+      <Route path="/" element={<CardRegistration />} />
       <Route path={routePath.simpleLogin} element={<SimpleLogin />} />
       <Route path={routePath.simpleRegister} element={<SimpleRegistration />} />
       <Route path={routePath.splitLogin} element={<Login />} />

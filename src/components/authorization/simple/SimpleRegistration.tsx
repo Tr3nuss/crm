@@ -3,6 +3,8 @@ import { FC, useState } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import routePath from "../../../routes/routePath";
 
 export const SimpleRegistration: FC = () => {
   interface IFormData {
@@ -111,7 +113,10 @@ export const SimpleRegistration: FC = () => {
             }}
           >
             <p style={{ fontSize: 19, fontWeight: 500 }}>Регистрация</p>
-            <p style={{ fontSize: 13 }}>Уже есть аккаунт? Авторизуйтесь</p>
+            <p style={{ fontSize: 13 }}>
+              Уже есть аккаунт?{" "}
+              <Link to={routePath.simpleLogin}>Авторизуйтесь</Link>
+            </p>
           </Box>
 
           <TextField
