@@ -12,6 +12,15 @@ import { CardForgotPassword } from "../components/authorization/card/CardForgotP
 import SimpleConfirmMail from "../components/authorization/simple/SimpleConfirmMail";
 import ConfirmMail from "../components/authorization/split/ConfirmMail";
 import CardConfirmMail from "../components/authorization/card/CardConfirmMail";
+import SimplePasswordReset from "../components/authorization/simple/SimplePasswordReset";
+import PasswordReset from "../components/authorization/split/PasswordReset";
+import CardResetPassword from "../components/authorization/card/CardResetPassword";
+import SimpleLogout from "../components/authorization/simple/SimpleLogout";
+import Logout from "../components/authorization/split/Logout";
+import CardLogout from "../components/authorization/card/CardLogout";
+import SimpleLockScreen from "../components/authorization/simple/SimpleLockScreen";
+import LockScreen from "../components/authorization/split/LockScreen";
+import { CardLockScreen } from "../components/authorization/card/CardLockScreen";
 
 export const RouteNavigation: FC = () => {
   return (
@@ -32,6 +41,15 @@ export const RouteNavigation: FC = () => {
       <Route path="/simple_confirm_mail" element={<SimpleConfirmMail />} />
       <Route path="/split_confirm_mail" element={<ConfirmMail />} />
       <Route path="/card_confirm_mail" element={<CardConfirmMail />} />
+      <Route path="/simple_password_reset" element={<SimplePasswordReset />} />
+      <Route path="/split_password_reset" element={<PasswordReset />} />
+      <Route path="/card_password_reset" element={<CardResetPassword />} />
+      <Route path="/simple_logout" element={<SimpleLogout />} />
+      <Route path="/split_logout" element={<Logout />} />
+      <Route path="/card_logout" element={<CardLogout />} />
+      <Route path="/simple_lock_screen" element={<SimpleLockScreen />} />
+      <Route path="/split_lock_screen" element={<LockScreen />} />
+      <Route path="/card_lock_screen" element={<CardLockScreen />} />
     </Routes>
   );
 };
