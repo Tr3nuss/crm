@@ -44,7 +44,7 @@ export const SimpleLogout: FC = () => (
       </p>
       <Button
         as={Link}
-        to='simple_login'
+        to="/simple_login"
         sx={{
           textTransform: "none",
           width: 150,

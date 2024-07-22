@@ -1,12 +1,15 @@
-import { FC, useState } from "react";
+import { FC, FormEvent, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { Box, Button, TextField } from "@mui/material";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const CardForgotPassword: FC = () => {
+  const emailForgotPasswordInputRef = useRef<HTMLInputElement>(null);
+
   const [email, setEmail] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
       toast.error("Please enter your email");
@@ -28,7 +31,7 @@ export const CardForgotPassword: FC = () => {
       toast.error("An error occurred while sending the reset link");
     }
   };
-  
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -66,7 +69,7 @@ export const CardForgotPassword: FC = () => {
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "140px" }}>
-          Read our terms and conditions
+          Ознакомьтесь с нашими условиями
         </p>
       </Box>
       <Box
@@ -82,7 +85,7 @@ export const CardForgotPassword: FC = () => {
           borderBottomRightRadius: "5px",
         }}
       >
-        <p style={{ fontSize: 23, fontWeight: 500 }}>Forgot your password?</p>
+        <p style={{ fontSize: 23, fontWeight: 500 }}>Забыли пароль?</p>
         <p
           style={{
             color: "rgb(94, 110, 130)",
@@ -91,7 +94,7 @@ export const CardForgotPassword: FC = () => {
             fontFamily: "Open Sans",
           }}
         >
-          Enter your email and we'll send you a reset link
+          Напишите ваш E-mail и мы вышлем ссылку для сброса
         </p>
         <TextField
           size="small"
@@ -99,9 +102,12 @@ export const CardForgotPassword: FC = () => {
           placeholder="Email address..."
           type="email"
           name="email"
-          onChange={({ EventTarget }) => setEmail(EventTarget.value)}
+          onChange={(e) => setEmail(e.target.value)}
+          ref={emailForgotPasswordInputRef}
         />
         <Button
+          LinkComponent={Link}
+          to="/card_confirm_mail"
           type="submit"
           sx={{
             textTransform: "none",
@@ -115,7 +121,7 @@ export const CardForgotPassword: FC = () => {
           }}
           disabled={!email}
         >
-          Send reset link
+          Отправить ссылку для сброса
         </Button>
         <p
           style={{
@@ -125,7 +131,7 @@ export const CardForgotPassword: FC = () => {
             paddingTop: "20px",
           }}
         >
-          I can't recover my account using this page
+          Не могу получить доступ к аккаунту с помощью этой страницы
         </p>
       </Box>
     </form>

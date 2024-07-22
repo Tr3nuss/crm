@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Box, TextField, Button } from "@mui/material";
@@ -8,7 +8,7 @@ import bgImg from "../../../assets/img/generic/18.jpg";
 const LockScreen: FC = () => {
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post("API", { password: password });
@@ -97,7 +97,7 @@ const LockScreen: FC = () => {
               placeholder="Enter your password..."
               type="password"
               name="password"
-              onChange={({ EventTarget }) => setPassword(EventTarget.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Button
               type="submit"

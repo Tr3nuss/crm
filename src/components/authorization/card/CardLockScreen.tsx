@@ -1,13 +1,13 @@
 import { Box, TextField, Button } from "@mui/material";
 import team1 from "../../../assets/img/team/1.jpg";
 import { toast } from "react-toastify";
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import axios from "axios";
 
 export const CardLockScreen: FC = () => {
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post("API", { password: password });
@@ -107,7 +107,7 @@ export const CardLockScreen: FC = () => {
             placeholder="Enter your password..."
             name="password"
             type="password"
-            onChange={({ EventTarget }) => setPassword(EventTarget.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button
             type="submit"

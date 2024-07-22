@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -15,10 +15,10 @@ export const SimplePasswordReset: FC = () => {
     confirmPassword: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.password || !formData.confirmPassword) {
-      toast.error("Please enter your email");
+      toast.error("Пожалуйста введите свой email");
       return;
     }
 
@@ -40,7 +40,7 @@ export const SimplePasswordReset: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -89,7 +89,7 @@ export const SimplePasswordReset: FC = () => {
           size="small"
           type="password"
           name="password"
-          placeholder="New Password"
+          placeholder="Новый пароль"
           sx={{ width: "100%" }}
           onChange={handleFieldChange}
         />
@@ -97,7 +97,7 @@ export const SimplePasswordReset: FC = () => {
           size="small"
           type="password"
           name="confirmPassword"
-          placeholder="Confirm Password"
+          placeholder="Подтвердить пароль"
           sx={{ width: "100%" }}
           onChange={handleFieldChange}
         />

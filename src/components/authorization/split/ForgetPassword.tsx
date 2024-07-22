@@ -1,13 +1,14 @@
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import { Box, Button, TextField } from "@mui/material";
 import bgImg from "../../../assets/img/generic/17.jpg";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ForgetPassword: FC = () => {
   const [email, setEmail] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
       toast.error("Please enter your email");
@@ -85,10 +86,12 @@ const ForgetPassword: FC = () => {
             placeholder="Email address..."
             type="email"
             name="email"
-            onChange={({ EventTarget }) => setEmail(EventTarget.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Button
             type="submit"
+            as={Link}
+            to="split_confirm_mail"
             sx={{
               textTransform: "none",
               color: "#fff",

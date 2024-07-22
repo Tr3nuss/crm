@@ -3,7 +3,6 @@ import { Box, Button } from "@mui/material";
 import bgImg from "../../../assets/img/generic/19.jpg";
 import logoutImg from "../../../assets/img/icons/spot-illustrations/45.png";
 import { Link } from "react-router-dom";
-import routePath from "../../../routes/routePath";
 
 export const Logout: FC = () => {
   return (
@@ -61,7 +60,7 @@ export const Logout: FC = () => {
           </p>
           <Button
             as={Link}
-            to={routePath.splitLogin}
+            to="split_login"
             sx={{
               textTransform: "none",
               width: 150,

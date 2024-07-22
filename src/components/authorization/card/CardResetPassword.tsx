@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import { Box, TextField, Button } from "@mui/material";
 import axios from "axios";
@@ -14,7 +14,7 @@ export const CardResetPassword: FC = () => {
     confirmPassword: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.password || !formData.confirmPassword) {
       toast.error("Please enter your email");
@@ -39,7 +39,7 @@ export const CardResetPassword: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,

@@ -78,12 +78,12 @@ export const CardConfirmMail: FC = () => {
         </p>
 
         <Button
-          as={Link}
+          LinkComponent={Link}
           to="/card_login"
           sx={{
             textTransform: "none",
-            width: 150,
-            height: 30,
+            width: 300,
+            height: 50,
             bgcolor: "rgb(38, 107, 198)",
             fontSize: 14,
             fontWeight: 500,

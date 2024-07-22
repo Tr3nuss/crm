@@ -1,10 +1,9 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import bgImg from "../../../assets/img/generic/14.jpg";
 import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 
 export const Login: FC = () => {
   interface IFormData {
@@ -19,7 +18,7 @@ export const Login: FC = () => {
     remember: false,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
       toast.error("Please enter your email");
@@ -45,7 +44,7 @@ export const Login: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -105,7 +104,7 @@ export const Login: FC = () => {
             <div>
               <p>
                 Новый пользователь?{" "}
-                <Link to='split_register'>Создать аккаунт</Link>
+                <Link to="split_register">Создать аккаунт</Link>
               </p>
             </div>
           </Box>
@@ -151,7 +150,7 @@ export const Login: FC = () => {
               Запомнить меня
             </p>
             <Link
-              to='split_forget_password'
+              to="split_forget_password"
               style={{
                 color: "rgb(44, 123, 229)",
                 fontWeight: 500,

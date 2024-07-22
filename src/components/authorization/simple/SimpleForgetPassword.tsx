@@ -1,16 +1,17 @@
-import { FC, useState } from "react";
+import { FC, useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import { Box, TextField, Button } from "@mui/material";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const SimpleForgetPassword: FC = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
-      toast.error("Please enter your email");
+      toast.error("Пожалуйста введите ваш email");
       return;
     }
 
@@ -74,9 +75,11 @@ export const SimpleForgetPassword: FC = () => {
           placeholder="Email address..."
           type="email"
           name="email"
-          onChange={({ EventTarget }) => setEmail(EventTarget.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Button
+          as={Link}
+          to="simple_confirm_mail"
           type="submit"
           sx={{
             textTransform: "none",
@@ -90,7 +93,7 @@ export const SimpleForgetPassword: FC = () => {
           }}
           disabled={!email}
         >
-          Send reset link
+          Отправить ссылку
         </Button>
         <p
           style={{

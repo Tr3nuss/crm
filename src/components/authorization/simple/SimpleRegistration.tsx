@@ -1,5 +1,5 @@
 import { Box, Checkbox, TextField, Button } from "@mui/material";
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
@@ -22,7 +22,7 @@ export const SimpleRegistration: FC = () => {
     isAccepted: false,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !formData.name ||
@@ -30,7 +30,7 @@ export const SimpleRegistration: FC = () => {
       !formData.password ||
       formData.password !== formData.confirmPassword
     ) {
-      toast.error("Please check the entered data");
+      toast.error("Пожалуйста проверьте введенные данные");
       return;
     }
 
@@ -54,7 +54,7 @@ export const SimpleRegistration: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,

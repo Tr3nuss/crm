@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Box, Button, TextField, Checkbox } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -17,7 +17,7 @@ export const CardLogin: FC = () => {
     remember: false,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
       toast.error("Please enter your email");
@@ -43,7 +43,7 @@ export const CardLogin: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -89,7 +89,10 @@ export const CardLogin: FC = () => {
 
         <p style={{ fontSize: 16, color: "#fff", paddingTop: "35px" }}>
           Нет аккаунта?
-          <br /> <Link to="card_register">Начать!</Link>
+          <br />{" "}
+          <Link to="/card_register" style={{ color: "#fff" }}>
+            Начать!
+          </Link>
         </p>
 
         <p style={{ fontSize: 14, color: "#fff", paddingTop: "50px" }}>
@@ -157,6 +160,7 @@ export const CardLogin: FC = () => {
               color: "rgb(44, 123, 229)",
               fontWeight: 500,
               fontSize: 13.5,
+              textDecoration: "none",
             }}
           >
             Забыли пароль?

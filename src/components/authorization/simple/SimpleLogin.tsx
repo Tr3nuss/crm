@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import { Box, TextField, Button, Checkbox } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
@@ -18,7 +18,7 @@ export const SimpleLogin: FC = () => {
     remember: false,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
       toast.error("Please enter your email");
@@ -44,7 +44,7 @@ export const SimpleLogin: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -109,7 +109,7 @@ export const SimpleLogin: FC = () => {
                 fontSize: 13.5,
               }}
             >
-              или <Link to="simple_register">создать аккаунт</Link>
+              или <Link to="/simple_register">создать аккаунт</Link>
             </p>
           </Box>
           <TextField
@@ -154,7 +154,7 @@ export const SimpleLogin: FC = () => {
               Запомнить меня
             </p>
             <Link
-              to="simple_forget_password"
+              to="/simple_forget_password"
               style={{
                 color: "rgb(44, 123, 229)",
                 fontWeight: 500,

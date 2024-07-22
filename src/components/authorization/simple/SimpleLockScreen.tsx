@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, FormEvent } from "react";
 import team1 from "../../../assets/img/team/1.jpg";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
@@ -8,7 +8,7 @@ import { Box, TextField, Button } from "@mui/material";
 const SimpleLockScreen: FC = () => {
   const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post("API", { password: password });
@@ -97,7 +97,7 @@ const SimpleLockScreen: FC = () => {
               name="password"
               type="password"
               sx={{ width: 230 }}
-              onChange={({ EventTarget }) => setPassword(EventTarget.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Button
               type="submit"

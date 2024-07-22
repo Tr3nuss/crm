@@ -9,6 +9,9 @@ import CardRegistration from "../components/authorization/card/CardRegistration"
 import SimpleForgetPassword from "../components/authorization/simple/SimpleForgetPassword";
 import ForgetPassword from "../components/authorization/split/ForgetPassword";
 import { CardForgotPassword } from "../components/authorization/card/CardForgotPassword";
+import SimpleConfirmMail from "../components/authorization/simple/SimpleConfirmMail";
+import ConfirmMail from "../components/authorization/split/ConfirmMail";
+import CardConfirmMail from "../components/authorization/card/CardConfirmMail";
 
 export const RouteNavigation: FC = () => {
   return (
@@ -26,6 +29,9 @@ export const RouteNavigation: FC = () => {
       />
       <Route path="/split_forget_password" element={<ForgetPassword />} />
       <Route path="/card_forget_password" element={<CardForgotPassword />} />
+      <Route path="/simple_confirm_mail" element={<SimpleConfirmMail />} />
+      <Route path="/split_confirm_mail" element={<ConfirmMail />} />
+      <Route path="/card_confirm_mail" element={<CardConfirmMail />} />
     </Routes>
   );
 };

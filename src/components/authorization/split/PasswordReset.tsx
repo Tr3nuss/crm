@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import { toast } from "react-toastify";
 import bgImg from "../../../assets/img/generic/20.jpg";
@@ -15,7 +15,7 @@ export const PasswordReset: FC = () => {
     confirmPassword: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.password || !formData.confirmPassword) {
       toast.error("Пожалуйста, введите ваш email");
@@ -40,7 +40,7 @@ export const PasswordReset: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,

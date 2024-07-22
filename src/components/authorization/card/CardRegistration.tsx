@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Checkbox } from "@mui/material";
 import { toast } from "react-toastify";
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const CardRegistration: FC = () => {
     isAccepted: false,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !formData.name ||
@@ -53,7 +53,7 @@ const CardRegistration: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -139,6 +139,7 @@ const CardRegistration: FC = () => {
           placeholder="Email-адрес"
           sx={{ width: "100%" }}
           type="email"
+          name="email"
           onChange={handleFieldChange}
         />
         <Box sx={{ display: "flex", gap: "10px" }}>

@@ -1,10 +1,9 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Box, Button, TextField, Checkbox } from "@mui/material";
 import bgImg from "../../../assets/img/generic/15.jpg";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import routePath, { rootPaths } from "../../../routes/routePath";
 
 export const Registration: FC = () => {
   interface IFormData {
@@ -23,7 +22,7 @@ export const Registration: FC = () => {
     isAccepted: false,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !formData.name ||
@@ -55,7 +54,7 @@ export const Registration: FC = () => {
     }
   };
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -112,7 +111,7 @@ export const Registration: FC = () => {
           >
             <p style={{ fontSize: 28, fontWeight: 500 }}>Регистрация</p>
             <p>
-              Вы уже пользователь? <Link to="split_login">Логин</Link>
+              Вы уже пользователь? <Link to="/split_login">Логин</Link>
             </p>
           </Box>
 
