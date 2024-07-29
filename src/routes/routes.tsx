@@ -25,7 +25,7 @@ import { CardLockScreen } from "../components/authorization/card/CardLockScreen"
 export const RouteNavigation: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<CardRegistration />} />
+      <Route path="/" element={<SimpleRegistration />} />
       <Route path="/simple_login" element={<SimpleLogin />} />
       <Route path="/simple_register" element={<SimpleRegistration />} />
       <Route path="/split_login" element={<Login />} />

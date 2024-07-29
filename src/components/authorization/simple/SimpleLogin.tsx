@@ -4,6 +4,7 @@ import { Box, TextField, Button, Checkbox } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+//@ts-ignore
 
 export const SimpleLogin: FC = () => {
   interface IFormData {
@@ -11,6 +12,25 @@ export const SimpleLogin: FC = () => {
     password: string;
     remember: boolean;
   }
+
+  //@ts-ignore
+     YaAuthSuggest.init(
+        {
+          client_id: "52075f9277db41f9a5c74f23607c8e74",
+          response_type: "token",
+          redirect_uri: "https://example.com",
+        },
+        "https://example.com",
+        { view: "default" }
+      )
+        //@ts-ignore
+        .then(({ handler }) => handler())
+        //@ts-ignore
+        .then((data) => console.log("Сообщение с токеном", data))
+        //@ts-ignore
+        .catch((error) => console.log("Обработка ошибки", error))
+
+  //@ts-ignore
 
   const [formData, setFormData] = useState<IFormData>({
     email: "",
