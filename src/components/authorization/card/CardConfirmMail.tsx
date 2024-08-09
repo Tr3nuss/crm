@@ -1,4 +1,5 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
 import { FC } from "react";
 import { Link } from "react-router-dom";
@@ -78,7 +79,7 @@ export const CardConfirmMail: FC = () => {
         </p>
 
         <Button
-          LinkComponent={Link}
+          component={Link}
           to="/card_login"
           sx={{
             textTransform: "none",

@@ -1,4 +1,5 @@
-import { Box, Button, TextField, Checkbox } from "@mui/material";
+import { Box, TextField, Checkbox } from "@mui/material";
+import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import axios from "axios";
@@ -97,7 +98,7 @@ const CardRegistration: FC = () => {
         <Box sx={{ paddingTop: "70px" }}>
           <p style={{ color: "#fff" }}>Уже есть аккаунт?</p>
           <Button
-            as={Link}
+            component={Link}
             to="/card_login"
             sx={{
               textTransform: "none",

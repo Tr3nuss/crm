@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import bgImg from "../../../assets/img/generic/20.jpg";
 import axios from "axios";

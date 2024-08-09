@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { Box, Button, TextField, Checkbox } from "@mui/material";
+import { Box, TextField, Checkbox } from "@mui/material";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";

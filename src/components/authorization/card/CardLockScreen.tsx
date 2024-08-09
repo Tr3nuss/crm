@@ -1,4 +1,5 @@
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import team1 from "../../../assets/img/team/1.jpg";
 import { toast } from "react-toastify";
 import { FC, FormEvent, useState } from "react";

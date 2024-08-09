@@ -3,7 +3,8 @@ import team1 from "../../../assets/img/team/1.jpg";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 
 const SimpleLockScreen: FC = () => {
   const [password, setPassword] = useState<string>("");

@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
 import logoutImg from "../../../assets/img/icons/spot-illustrations/45.png";
 import { Link } from "react-router-dom";
 
@@ -75,7 +76,7 @@ export const CardLogout: FC = () => {
           вы успешно вышли из системы
         </p>
         <Button
-          as={Link}
+          component={Link}
           to="/card_login"
           sx={{
             textTransform: "none",

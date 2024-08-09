@@ -1,7 +1,8 @@
 import { FC } from "react";
 import bgImg from "../../../assets/img/generic/16.jpg";
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 export const ConfirmMail: FC = () => {
@@ -72,7 +73,7 @@ export const ConfirmMail: FC = () => {
           </p>
 
           <Button
-            as={Link}
+            component={Link}
             to="/split_login"
             sx={{
               textTransform: "none",

@@ -1,6 +1,7 @@
 import { FC, FormEvent, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -106,7 +107,7 @@ export const CardForgotPassword: FC = () => {
           ref={emailForgotPasswordInputRef}
         />
         <Button
-          LinkComponent={Link}
+          component={Link}
           to="/card_confirm_mail"
           type="submit"
           sx={{

@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
-import { Box, TextField, Button, Checkbox } from "@mui/material";
+import { Box, TextField, Checkbox } from "@mui/material";
+import Button from "@mui/material/Button";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -14,21 +15,23 @@ export const SimpleLogin: FC = () => {
   }
 
   //@ts-ignore
-     YaAuthSuggest.init(
-        {
-          client_id: "52075f9277db41f9a5c74f23607c8e74",
-          response_type: "token",
-          redirect_uri: "https://example.com",
-        },
-        "https://example.com",
-        { view: "default" }
-      )
-        //@ts-ignore
-        .then(({ handler }) => handler())
-        //@ts-ignore
-        .then((data) => console.log("Сообщение с токеном", data))
-        //@ts-ignore
-        .catch((error) => console.log("Обработка ошибки", error))
+  const yandex = window.YaAuthSuggest.init(
+    {
+      client_id: "fd5f194b3ad94d91a2e2d63ee48d98e1",
+      response_type: "token",
+      redirect_uri: "http://localhost:5173",
+    },
+    "http://localhost",
+    { view: "default" }
+  )
+    //@ts-ignore
+    .then(({ handler }) => handler())
+    //@ts-ignore
+    .then((data) => console.log("Сообщение с токеном", data))
+    //@ts-ignore
+    .catch((error) => console.log("Обработка ошибки", error));
+
+  console.log(yandex);
 
   //@ts-ignore
 
@@ -200,6 +203,7 @@ export const SimpleLogin: FC = () => {
           >
             Авторизоваться
           </Button>
+
           {/* <Box
             sx={{
               display: "flex",

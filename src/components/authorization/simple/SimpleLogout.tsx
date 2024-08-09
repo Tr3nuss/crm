@@ -1,7 +1,8 @@
 import { FC } from "react";
 import logoutImg from "../../../assets/img/icons/spot-illustrations/45.png";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 export const SimpleLogout: FC = () => (
@@ -43,7 +44,7 @@ export const SimpleLogout: FC = () => (
         успешно вышли из системы
       </p>
       <Button
-        as={Link}
+        component={Link}
         to="/simple_login"
         sx={{
           textTransform: "none",

@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, TextField, Checkbox, Button } from "@mui/material";
+import { Box, TextField, Checkbox } from "@mui/material";
+import Button from "@mui/material/Button";
 // import { useAppContext } from "providers/AppProvider";
 
 const Example: React.FC = () => {

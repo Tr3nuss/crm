@@ -1,6 +1,7 @@
 import { FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import bgImg from "../../../assets/img/generic/17.jpg";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -90,7 +91,7 @@ const ForgetPassword: FC = () => {
           />
           <Button
             type="submit"
-            as={Link}
+            component={Link}
             to="split_confirm_mail"
             sx={{
               textTransform: "none",

@@ -1,7 +1,8 @@
 import { FC, useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -78,7 +79,7 @@ export const SimpleForgetPassword: FC = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <Button
-          as={Link}
+          component={Link}
           to="simple_confirm_mail"
           type="submit"
           sx={{

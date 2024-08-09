@@ -1,7 +1,8 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import bgImg from "../../../assets/img/generic/14.jpg";
 import { toast } from "react-toastify";
-import { Box, TextField, Button, Checkbox } from "@mui/material";
+import { Box, TextField, Checkbox } from "@mui/material";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
 

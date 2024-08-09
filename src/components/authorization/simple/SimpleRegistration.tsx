@@ -1,4 +1,5 @@
-import { Box, Checkbox, TextField, Button } from "@mui/material";
+import { Box, Checkbox, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
