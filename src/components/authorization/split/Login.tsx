@@ -2,6 +2,24 @@ import { FC } from "react";
 import { Box } from "@mui/material";
 
 export const Login: FC = () => {
+  
+
+  interface AuthResponse {
+    handler: () => Promise<TokenData>;
+  }
+
+  interface TokenData {
+    accessToken: string;
+
+    expiresIn?: number;
+    tokenType?: string;
+  }
+
+  interface AuthError {
+    message: string;
+  }
+
+//@ts-ignore
   window.YaAuthSuggest.init(
     {
       client_id: "fd5f194b3ad94d91a2e2d63ee48d98e1",
@@ -12,12 +30,9 @@ export const Login: FC = () => {
     "https://любас.рф/home_page",
     { view: "default" }
   )
-
-    .then(({ handler }) => handler())
-
-    .then((data) => console.log("Сообщение с токеном", data))
-
-    .catch((error) => console.log("Обработка ошибки", error));
+    .then(({ handler }: AuthResponse) => handler())
+    .then((data: TokenData) => console.log("Сообщение с токеном", data))
+    .catch((error: AuthError) => console.log("Обработка ошибки", error));
 
   return (
     <form
