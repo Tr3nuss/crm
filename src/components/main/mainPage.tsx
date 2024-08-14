@@ -13,7 +13,7 @@ export const MainPage: FC = () => {
 
     const fetchUserData = async (token: string) => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<object>(
           "https://387f47aeacc8.vps.myjino.ru/api",
           {
             headers: {
