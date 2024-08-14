@@ -24,6 +24,8 @@ export const Login: FC = () => {
       style={{
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
+        height: '100vh',
         gap: 35,
       }}
     >
