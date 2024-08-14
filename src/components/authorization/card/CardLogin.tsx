@@ -1,59 +1,27 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { Box, TextField, Checkbox } from "@mui/material";
-import Button from "@mui/material/Button";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { FC } from "react";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const CardLogin: FC = () => {
-  interface IFormData {
-    email: string;
-    password: string;
-    remember: boolean;
-  }
+  window.YaAuthSuggest.init(
+    {
+      client_id: "fd5f194b3ad94d91a2e2d63ee48d98e1",
+      response_type: "token",
+      redirect_uri: "https://любас.рф/home_page",
+      parentId: "yandex-button-container",
+    },
+    "https://любас.рф/home_page",
+    { view: "default" }
+  )
 
-  const [formData, setFormData] = useState<IFormData>({
-    email: "",
-    password: "",
-    remember: false,
-  });
+    .then(({ handler }) => handler())
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!formData.email || !formData.password) {
-      toast.error("Please enter your email");
-      return;
-    }
+    .then((data) => console.log("Сообщение с токеном", data))
 
-    try {
-      const response = await axios.post("API", {
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (response.status === 200) {
-        toast.success(`Logged in`, {
-          theme: "colored",
-        });
-      } else {
-        toast.error("Failed to send reset link");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("An error occurred while sending the reset link");
-    }
-  };
-
-  const handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+    .catch((error) => console.log("Обработка ошибки", error));
 
   return (
     <form
-      onSubmit={handleSubmit}
       style={{
         display: "flex",
         alignItems: "center",
@@ -109,80 +77,8 @@ export const CardLogin: FC = () => {
           flexDirection: "column",
           padding: "90px 48px",
         }}
-      >
-        <p style={{ fontSize: 28, fontWeight: 500 }}>Вход в учетную запись</p>
-        <TextField
-          size="small"
-          name="email"
-          type="email"
-          placeholder="Email адрес"
-          style={{ paddingTop: "20px" }}
-          onChange={handleFieldChange}
-        />
-        <TextField
-          size="small"
-          name="password"
-          type="password"
-          placeholder="Пароль"
-          sx={{ paddingTop: "30px" }}
-          onChange={handleFieldChange}
-        />
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            paddingTop: "15px",
-          }}
-        >
-          <Checkbox
-            name="remember"
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                remember: e.target.checked,
-              })
-            }
-            sx={{ appearance: "none", border: "none", outline: "none" }}
-          />{" "}
-          <p
-            style={{
-              paddingRight: "140px",
-              color: "rgb(94, 110, 130)",
-              fontSize: 13.5,
-              fontWeight: 500,
-            }}
-          >
-            Запомнить меня
-          </p>
-          <Link
-            to="/card_forget_password"
-            style={{
-              color: "rgb(44, 123, 229)",
-              fontWeight: 500,
-              fontSize: 13.5,
-              textDecoration: "none",
-            }}
-          >
-            Забыли пароль?
-          </Link>
-        </Box>
-        <Button
-          type="submit"
-          sx={{
-            textTransform: "none",
-            bgcolor: "rgb(44, 123, 229)",
-            color: "#fff",
-            fontSize: 16,
-            fontWeight: 400,
-            marginTop: "15px",
-            "&:disabled": { opacity: 0.5, color: "#fff" },
-          }}
-          disabled={!formData.password || !formData.email || !formData.remember}
-        >
-          Авторизоваться
-        </Button>
-      </Box>
+        id="yandex-button-container"
+      ></Box>
     </form>
   );
 };
