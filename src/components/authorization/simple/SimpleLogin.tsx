@@ -65,8 +65,6 @@ export const SimpleLogin: FC = () => {
             falcon
           </p>
         </Box>
-
-        <div id="yandex-button-container">gvreghrthrtjrt6jtrjhrt</div>
       </Box>
     </form>
   );

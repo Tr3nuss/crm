@@ -14,13 +14,14 @@ export const MainPage: FC = () => {
     const fetchUserData = async (token: string) => {
       try {
         const response = await axios.get<object>(
-          "https://387f47aeacc8.vps.myjino.ru/api",
+          "https://jsonplaceholder.typicode.com/users",
           {
             headers: {
               Authorization: token,
             },
           }
         );
+        console.log(token);
         setUserData(response.data);
       } catch (err: any | string) {
         setError(err);
