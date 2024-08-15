@@ -51,7 +51,7 @@ export const RouteNavigation: FC = () => {
       <Route path="/simple_lock_screen" element={<SimpleLockScreen />} />
       <Route path="/split_lock_screen" element={<LockScreen />} />
       <Route path="/card_lock_screen" element={<CardLockScreen />} />
-      <Route path="main_page" element={<MainPage />} />
+      <Route path="/main_page" element={<MainPage />} />
     </Routes>
   );
 };
