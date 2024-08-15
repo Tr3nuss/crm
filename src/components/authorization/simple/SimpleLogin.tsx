@@ -23,12 +23,12 @@ export const SimpleLogin: FC = () => {
   //@ts-ignore
   window.YaAuthSuggest.init(
     {
-      client_id: "fd5f194b3ad94d91a2e2d63ee48d98e1",
+      client_id: "ff2f6ad081c24efca5b6511111bedced",
       response_type: "token",
-      redirect_uri: "https://любас.рф/home_page",
-      parentId: "yandex-button-container",
+      redirect_uri: "https://387f47aeacc8.vps.myjino.ru/main_page",
     },
-    "https://любас.рф/home_page",
+    "https://387f47aeacc8.vps.myjino.ru",
+    { parentId: "yandex-button-container" },
     { view: "default" }
   )
     .then(({ handler }: AuthResponse) => handler())

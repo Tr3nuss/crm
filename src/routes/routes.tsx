@@ -21,6 +21,7 @@ import CardLogout from "../components/authorization/card/CardLogout";
 import SimpleLockScreen from "../components/authorization/simple/SimpleLockScreen";
 import LockScreen from "../components/authorization/split/LockScreen";
 import { CardLockScreen } from "../components/authorization/card/CardLockScreen";
+import { MainPage } from "../components/main/mainPage";
 
 export const RouteNavigation: FC = () => {
   return (
@@ -50,6 +51,7 @@ export const RouteNavigation: FC = () => {
       <Route path="/simple_lock_screen" element={<SimpleLockScreen />} />
       <Route path="/split_lock_screen" element={<LockScreen />} />
       <Route path="/card_lock_screen" element={<CardLockScreen />} />
+      <Route path="main_page" element={<MainPage />} />
     </Routes>
   );
 };
