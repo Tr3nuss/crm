@@ -6,10 +6,16 @@ export const MainPage: FC = () => {
   const [error, setError] = useState<string | Error | null>(null);
 
   useEffect(() => {
+    //@ts-ignore
+    window.YaSendSuggestToken(
+      "https://387f47aeacc8.vps.myjino.ru/simple_login",
+      { flag: true }
+    );
+
     const fetchUserData = async () => {
       const token = localStorage.getItem("O-auth-token");
       if (!token) {
-        setError("Token not found");
+        setError("Токен не найден");
         return;
       }
       console.log(token);
