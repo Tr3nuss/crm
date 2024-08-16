@@ -27,7 +27,7 @@ export const SimpleLogin: FC = () => {
       response_type: "token",
       redirect_uri: "https://387f47aeacc8.vps.myjino.ru/main_page",
     },
-    "https://387f47aeacc8.vps.myjino.ru/simple_login",
+    "https://387f47aeacc8.vps.myjino.ru/main_page",
     {
       view: "button",
       parentId: "button-container-id",

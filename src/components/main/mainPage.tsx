@@ -50,7 +50,7 @@ export const MainPage: FC = () => {
           <pre>{JSON.stringify(userData, null, 2)}</pre>
         </div>
       ) : (
-        <p>Загрузка данных...</p>
+        <p>Zagruzka dannyx...</p>
       )}
     </div>
   );
