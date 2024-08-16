@@ -23,7 +23,7 @@ export const MainPage: FC = () => {
             },
           }
         );
-        setUserData(response.data);
+        setUserData(response.data as object | null);
       } catch (err: any | string) {
         setError(err);
         console.error("Ошибка при получении данных о пользователе:", err);
