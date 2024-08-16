@@ -28,8 +28,15 @@ export const SimpleLogin: FC = () => {
       redirect_uri: "https://387f47aeacc8.vps.myjino.ru/main_page",
     },
     "https://387f47aeacc8.vps.myjino.ru",
-    { parentId: "yandex-button-container" },
-    { view: "default" }
+    {
+      view: "button",
+      parentId: "button-container-id",
+      buttonSize: "m",
+      buttonView: "main",
+      buttonTheme: "light",
+      buttonBorderRadius: "0",
+      buttonIcon: "ya",
+    }
   )
     .then(({ handler }: AuthResponse) => handler())
     .then((data: TokenData) => console.log("Сообщение с токеном", data))
@@ -65,6 +72,8 @@ export const SimpleLogin: FC = () => {
             falcon
           </p>
         </Box>
+
+        <div id="button-container-id"></div>
       </Box>
     </form>
   );
