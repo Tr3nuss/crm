@@ -6,28 +6,23 @@ export const MainPage: FC = () => {
   const [error, setError] = useState<string | Error | null>(null);
 
   useEffect(() => {
-    //@ts-ignore
-    window.YaSendSuggestToken(
-      "https://387f47aeacc8.vps.myjino.ru/simple_login",
-      { flag: true }
-    );
+    const fetchUserData = async () => {
+      const token = localStorage.getItem("O-auth-token");
+      if (!token) {
+        setError("Token not found");
+        return;
+      }
+      console.log(token);
 
-    const getTokenFromUrl = () => {
-      const params = new URLSearchParams(window.location.hash.slice(1));
-      return params.get("access_token");
-    };
-
-    const fetchUserData = async (token: string) => {
       try {
-        const response = await axios.get<object>(
+        const response = await axios.get(
           "https://jsonplaceholder.typicode.com/users",
           {
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${token}`, // Исправлено для правильной передачи токена
             },
           }
         );
-        console.log(token);
         setUserData(response.data);
       } catch (err: any | string) {
         setError(err);
@@ -35,23 +30,19 @@ export const MainPage: FC = () => {
       }
     };
 
-    const token = getTokenFromUrl();
-    if (token) {
-      fetchUserData(token);
-      localStorage.setItem("token", token);
-    }
+    fetchUserData();
   }, []);
 
   return (
     <div>
-      {error && <p>Ошибка</p>}
+      {error && <p>Ошибка: {error.toString()}</p>}
       {userData ? (
-        <div>
-          <pre>{JSON.stringify(userData, null, 2)}</pre>
-        </div>
+        <div>Здесь будут отображаться данные пользователя</div>
       ) : (
-        <p>Zagruzka dannyx...</p>
+        <p>Загрузка данных...</p>
       )}
     </div>
   );
 };
+
+export default MainPage;

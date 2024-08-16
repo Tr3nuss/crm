@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 
 //@ts-ignore
@@ -10,7 +10,7 @@ export const SimpleLogin: FC = () => {
   }
 
   interface TokenData {
-    accessToken: string;
+    access_token: string;
 
     expiresIn?: number;
     tokenType?: string;
@@ -39,7 +39,12 @@ export const SimpleLogin: FC = () => {
     }
   )
     .then(({ handler }: AuthResponse) => handler())
-    .then((data: TokenData) => console.log("Сообщение с токеном", data))
+    .then((data: TokenData) => {
+      console.log("Сообщение с токеном", data);
+      //@ts-ignore
+      localStorage.setItem("O-auth-token", Object.values(data[0])); // data[0] - access токен
+      window.location.href = "/main_page";
+    })
     .catch((error: AuthError) => console.log("Обработка ошибки", error));
 
   return (
@@ -74,6 +79,7 @@ export const SimpleLogin: FC = () => {
         </Box>
 
         <div id="button-container-id"></div>
+        <Button>Войти</Button>
       </Box>
     </form>
   );
