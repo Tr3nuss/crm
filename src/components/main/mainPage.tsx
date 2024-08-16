@@ -6,6 +6,12 @@ export const MainPage: FC = () => {
   const [error, setError] = useState<string | Error | null>(null);
 
   useEffect(() => {
+    //@ts-ignore
+    window.YaSendSuggestToken(
+      "https://387f47aeacc8.vps.myjino.ru/simple_login",
+      { flag: true }
+    );
+
     const getTokenFromUrl = () => {
       const params = new URLSearchParams(window.location.hash.slice(1));
       return params.get("access_token");
@@ -32,6 +38,7 @@ export const MainPage: FC = () => {
     const token = getTokenFromUrl();
     if (token) {
       fetchUserData(token);
+      localStorage.setItem("token", token);
     }
   }, []);
 
