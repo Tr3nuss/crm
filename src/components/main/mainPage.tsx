@@ -29,7 +29,7 @@ export const MainPage: FC = () => {
             params: { authToken: token },
           }
         );
-        setUserData(response.data as object | null);
+        console.log(response.data)
       } catch (err: any | string) {
         setError(err);
         console.error("Ошибка при получении данных о пользователе:", err);
@@ -44,6 +44,7 @@ export const MainPage: FC = () => {
       {error && <p>Ошибка: {error.toString()}</p>}
       {userData ? (
         <div>Здесь будут отображаться данные пользователя</div>
+        <p>{userData.login}</p>
       ) : (
         <p>Загрузка данных...</p>
       )}
