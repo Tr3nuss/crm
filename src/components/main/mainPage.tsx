@@ -13,7 +13,10 @@ export const MainPage: FC = () => {
     );
 
     const fetchUserData = async () => {
-      const token = localStorage.getItem("O-auth-token");
+      //@ts-ignore
+      const tokenData = JSON.parse(localStorage.getItem("O-auth-token"));
+      let token = tokenData.access_token;
+
       if (!token) {
         setError("Токен не найден");
         return;
@@ -22,11 +25,9 @@ export const MainPage: FC = () => {
 
       try {
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users",
+          "https://387f47aeacc8.vps.myjino.ru/api/authUser",
           {
-            headers: {
-              Authorization: `Bearer ${token}`, // Исправлено для правильной передачи токена
-            },
+            params: { authToken: token },
           }
         );
         setUserData(response.data as object | null);
