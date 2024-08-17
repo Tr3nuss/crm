@@ -13,11 +13,11 @@ export const MainPage: FC = () => {
 
   const [userData, setUserData] = useState<UserData | null>(null);
   const user = [
-    userData?.email,
-    userData?.first_name,
-    userData?.last_name,
-    userData?.login,
-    userData?.phone,
+    `Никнейм: ${userData?.login}`,
+    `Имя: ${userData?.first_name}`,
+    `Фамилия: ${userData?.last_name}`,
+    `Телефон: ${userData?.phone}`,
+    `Почта: ${userData?.email}`,
   ];
 
   useEffect(() => {
