@@ -11,6 +11,13 @@ export const MainPage: FC = () => {
   } // интерфейс для отрисовки данных юзера
 
   const [userData, setUserData] = useState<UserData | null>(null);
+  const user = [
+    userData?.email,
+    userData?.first_name,
+    userData?.last_name,
+    userData?.login,
+    userData?.phone,
+  ];
 
   useEffect(() => {
     //@ts-ignore
@@ -46,18 +53,22 @@ export const MainPage: FC = () => {
   return (
     <div>
       {userData ? (
-        <p
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            fontSize: 18,
-            fontWeight: 500,
-          }}
-        >
-          {userData.login}, {userData.first_name}, {userData.last_name}{" "}
-          {userData.email}, {userData.phone}
-        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          {user.map((user, id) => (
+            <p
+              key={id}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                fontSize: 18,
+                fontWeight: 500,
+              }}
+            >
+              {user}
+            </p>
+          ))}
+        </div>
       ) : (
         <p>Загрузка данных...</p>
       )}
