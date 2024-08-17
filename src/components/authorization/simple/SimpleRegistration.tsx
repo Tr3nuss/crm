@@ -114,7 +114,7 @@ export const SimpleRegistration: FC = () => {
           >
             <p style={{ fontSize: 19, fontWeight: 500 }}>Регистрация</p>
             <p style={{ fontSize: 13 }}>
-              Уже есть аккаунт? <Link to="/simple_login">Авторизуйтесь</Link>
+              Уже есть аккаунт? <a href="/simple_login">Авторизуйтесь</a>
             </p>
           </Box>
 
