@@ -42,7 +42,8 @@ export const SimpleLogin: FC = () => {
     .then((data: TokenData) => {
       console.log("Сообщение с токеном", data);
       //@ts-ignore
-      localStorage.setItem("O-auth-token", data);
+      localStorage.setItem("O-auth-token", JSON.stringify(data));
+      window.location.href = "/main_page";
     })
     .catch((error: AuthError) => console.log("Обработка ошибки", error));
 
