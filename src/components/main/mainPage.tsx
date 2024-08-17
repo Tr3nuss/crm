@@ -60,6 +60,7 @@ export const MainPage: FC = () => {
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
