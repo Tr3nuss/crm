@@ -6,6 +6,8 @@ export const MainPage: FC = () => {
     login: string;
     first_name: string;
     last_name: string;
+    email: string;
+    phone: string;
   }
 
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -41,6 +43,7 @@ export const MainPage: FC = () => {
         setUserData(response.data);
       } catch (err: any | string) {
         setError(err);
+        window.location.href = "/simple_login";
         console.error("Ошибка при получении данных о пользователе:", err);
       }
     };
@@ -51,7 +54,14 @@ export const MainPage: FC = () => {
   return (
     <div>
       {error && <p>Ошибка: {error.toString()}</p>}
-      {userData ? <p>{userData.login}</p> : <p>Загрузка данных...</p>}
+      {userData ? (
+        <p>
+          {userData.login}, {userData.first_name}, {userData.last_name}{" "}
+          {userData.email}, {userData.phone}
+        </p>
+      ) : (
+        <p>Загрузка данных...</p>
+      )}
     </div>
   );
 };
