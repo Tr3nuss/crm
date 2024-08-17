@@ -13,7 +13,10 @@ export const MainPage: FC = () => {
     );
 
     const fetchUserData = async () => {
-      const token = localStorage.getItem("O-auth-token");
+      //@ts-ignore
+      const tokenData = JSON.parse(localStorage.getItem("O-auth-token"));
+      let token = tokenData.access_token;
+
       if (!token) {
         setError("Токен не найден");
         return;
