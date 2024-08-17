@@ -17,8 +17,7 @@ export const MainPage: FC = () => {
       let token = tokenData.access_token;
 
       if (!token) {
-        setError("Токен не найден");
-        return;
+        window.location.href = "/simple_login";
       }
       console.log(token);
 
@@ -29,7 +28,7 @@ export const MainPage: FC = () => {
             params: { authToken: token },
           }
         );
-        console.log(response.data)
+        console.log(response.data);
       } catch (err: any | string) {
         setError(err);
         console.error("Ошибка при получении данных о пользователе:", err);
@@ -42,12 +41,7 @@ export const MainPage: FC = () => {
   return (
     <div>
       {error && <p>Ошибка: {error.toString()}</p>}
-      {userData ? (
-        <div>Здесь будут отображаться данные пользователя</div>
-        <p>{userData.login}</p>
-      ) : (
-        <p>Загрузка данных...</p>
-      )}
+      {userData ? <p>{userData.login}</p> : <p>Загрузка данных...</p>}
     </div>
   );
 };
