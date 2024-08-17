@@ -52,7 +52,7 @@ export const MainPage: FC = () => {
   }, []);
 
   function outlog() {
-    localStorage.clear();
+    localStorage.removeItem("O-auth-token");
     window.location.href = "/simple_login";
   }
 
