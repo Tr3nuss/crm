@@ -29,11 +29,11 @@ export const MainPage: FC = () => {
     const fetchUserData = async () => {
       let token = localStorage.getItem("O-auth-token");
 
-      window.onload = () => {
-        if (!token) {
-          window.location.href = "/simple_login"; // редирект в случае незареганного пользователя
-        }
-      };
+      // window.onload = () => {
+      //   if (!token) {
+      //     window.location.href = "/simple_login"; // редирект в случае незареганного пользователя
+      //   }
+      // };
 
       try {
         const response = await axios.get<UserData>(
