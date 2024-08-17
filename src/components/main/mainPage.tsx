@@ -19,12 +19,15 @@ export const MainPage: FC = () => {
 
     const fetchUserData = async () => {
       //@ts-ignore
-      const tokenData = JSON.parse(localStorage.getItem("O-auth-token"));
-      let token = tokenData.access_token;
 
-      if (!token) {
-        window.location.href = "/simple_login";
-      }
+      let token = localStorage.getItem("O-auth-token");
+
+      window.onload = () => {
+        if (!token) {
+          window.location.href = "/simple_login";
+        }
+      };
+
       console.log(token);
 
       try {
