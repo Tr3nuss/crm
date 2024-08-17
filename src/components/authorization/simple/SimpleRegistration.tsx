@@ -4,7 +4,6 @@ import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export const SimpleRegistration: FC = () => {
   interface IFormData {
