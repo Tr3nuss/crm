@@ -1,4 +1,5 @@
 import { FC, useState, useEffect } from "react";
+import { Button } from "@mui/material";
 import axios from "axios";
 
 export const MainPage: FC = () => {
@@ -50,28 +51,55 @@ export const MainPage: FC = () => {
     fetchUserData();
   }, []);
 
+  function outlog() {
+    localStorage.clear();
+    window.location.href = "/simple_login";
+  }
+
   return (
-    <div>
-      {userData ? (
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          {user.map((user, id) => (
-            <p
-              key={id}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "20px",
-                fontSize: 18,
-                fontWeight: 500,
-              }}
-            >
-              {user}
-            </p>
-          ))}
-        </div>
-      ) : (
-        <p>Загрузка данных...</p>
-      )}
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div>
+        {userData ? (
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+          >
+            {user.map((user, id) => (
+              <p
+                key={id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                  fontSize: 18,
+                  fontWeight: 500,
+                }}
+              >
+                {user}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p>Загрузка данных...</p>
+        )}
+      </div>
+      <Button
+        onClick={outlog}
+        sx={{
+          maxWidth: "300",
+          background: "#696969",
+          color: "#fff",
+          "&:hover": { background: "#B22222" },
+        }}
+      >
+        Выйти
+      </Button>
     </div>
   );
 };
