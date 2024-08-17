@@ -27,7 +27,7 @@ export const SimpleLogin: FC = () => {
       response_type: "token",
       redirect_uri: "https://387f47aeacc8.vps.myjino.ru/main_page",
     },
-    "https://387f47aeacc8.vps.myjino.ru",
+    "https://387f47aeacc8.vps.myjino.ru/simple_login",
     {
       view: "button",
       parentId: "button-container-id",
@@ -43,6 +43,7 @@ export const SimpleLogin: FC = () => {
       console.log("Сообщение с токеном", data);
       //@ts-ignore
       localStorage.setItem("O-auth-token", JSON.stringify(data));
+      window.location.href = "/main_page";
     })
     .catch((error: AuthError) => console.log("Обработка ошибки", error));
 
