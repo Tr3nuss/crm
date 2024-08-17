@@ -44,7 +44,7 @@ export const MainPage: FC = () => {
         );
         setUserData(response.data);
       } catch (err: any | string) {
-        window.location.href = "/simple_login";
+        console.error("Ошибка:", err);
       }
     };
 
