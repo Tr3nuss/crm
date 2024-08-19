@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
-import logo from "../../../assets/img/favicons/mstile-150x150.png";
+
 import envelope from "../../../assets/img/icons/spot-illustrations/16.png";
 import { Link } from "react-router-dom";
 

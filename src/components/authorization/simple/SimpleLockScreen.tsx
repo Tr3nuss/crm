@@ -1,6 +1,5 @@
 import { FC, useState, FormEvent } from "react";
 import team1 from "../../../assets/img/team/1.jpg";
-import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Box, TextField } from "@mui/material";
