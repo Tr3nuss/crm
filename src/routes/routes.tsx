@@ -6,7 +6,7 @@ import { MainPage } from "../components/main/mainPage";
 export const RouteNavigation: FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path="/" element={<SimpleLogin />} />
       <Route path="/simple_login" element={<SimpleLogin />} />
       <Route path="/main_page" element={<MainPage />} />
     </Routes>
