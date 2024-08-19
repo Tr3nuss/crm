@@ -2,7 +2,6 @@ import { Box, Checkbox, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
-import logo from "../../../assets/img/favicons/mstile-150x150.png";
 import axios from "axios";
 
 export const SimpleRegistration: FC = () => {
@@ -87,7 +86,6 @@ export const SimpleRegistration: FC = () => {
             justifyContent: "center",
           }}
         >
-          <img src={logo} alt="" width={150} height={150} />
           <p style={{ fontSize: 40, color: "#2c7be5", fontWeight: 800 }}>
             falcon
           </p>
