@@ -17,7 +17,6 @@ const SimpleConfirmMail: FC = () => {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <img src={logo} alt="" width={150} height={150} />
         <p style={{ fontSize: 40, color: "#2c7be5", fontWeight: 800 }}>
           falcon
         </p>

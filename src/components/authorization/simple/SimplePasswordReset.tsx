@@ -60,7 +60,6 @@ export const SimplePasswordReset: FC = () => {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <img src={logo} alt="logo" width={150} height={150} />
         <p
           style={{
             fontSize: 40,
