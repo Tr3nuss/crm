@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Box, Button } from "@mui/material";
-import logo from "../../../assets/img/favicons/mstile-150x150.png";
+import { Box } from "@mui/material";
+import logo from "../../../assets/img/favicons/logo.png";
 
 //@ts-ignore
 
@@ -72,14 +72,13 @@ export const SimpleLogin: FC = () => {
             justifyContent: "center",
           }}
         >
-          <img src={logo} alt="" width={150} height={150} />
+          <img src={logo} alt="logo" />
           <p style={{ fontSize: 40, color: "#2c7be5", fontWeight: 800 }}>
             falcon
           </p>
         </Box>
 
         <div id="button-container-id"></div>
-        <Button>Войти</Button>
       </Box>
     </form>
   );
