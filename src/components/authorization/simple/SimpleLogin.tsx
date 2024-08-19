@@ -72,7 +72,11 @@ export const SimpleLogin: FC = () => {
             justifyContent: "center",
           }}
         >
-          <img src={logo} alt="logo" />
+          <img
+            src={logo}
+            alt="logo"
+            style={{ backgroundColor: "transparent" }}
+          />
         </Box>
 
         <div id="button-container-id" style={{ marginTop: "14px" }}></div>
