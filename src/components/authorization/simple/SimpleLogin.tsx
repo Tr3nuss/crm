@@ -73,12 +73,9 @@ export const SimpleLogin: FC = () => {
           }}
         >
           <img src={logo} alt="logo" />
-          <p style={{ fontSize: 40, color: "#2c7be5", fontWeight: 800 }}>
-            falcon
-          </p>
         </Box>
 
-        <div id="button-container-id"></div>
+        <div id="button-container-id" style={{ marginTop: "14px" }}></div>
       </Box>
     </form>
   );
