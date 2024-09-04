@@ -4,21 +4,12 @@ import axios from "axios";
 
 export const MainPage: FC = () => {
   interface UserData {
-    login: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone: string;
+    id: string;
+    yandexId: string;
   } // интерфейс для отрисовки данных юзера
 
   const [userData, setUserData] = useState<UserData | null>(null);
-  const user = [
-    `Никнейм: ${userData?.login}`,
-    `Имя: ${userData?.first_name}`,
-    `Фамилия: ${userData?.last_name}`,
-    `Телефон: ${userData?.phone}`,
-    `Почта: ${userData?.email}`,
-  ];
+  const user = [`id: ${userData?.id}`, `yandexId: ${userData?.yandexId}`];
 
   useEffect(() => {
     //@ts-ignore
@@ -39,7 +30,7 @@ export const MainPage: FC = () => {
         const response = await axios.get<UserData>(
           "https://387f47aeacc8.vps.myjino.ru/api/authUser",
           {
-            params: { authToken: token },
+            params: { token: token },
           }
         );
         setUserData(response.data);
