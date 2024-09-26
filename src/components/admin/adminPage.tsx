@@ -62,7 +62,7 @@ const AdminPage: FC = () => {
     try {
       await axios.delete(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
-        { data: { id: ident } }
+        { params: { id: ident } }
       );
     } catch (err) {
       console.error(err);
