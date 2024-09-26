@@ -51,8 +51,7 @@ const AdminPage: FC = () => {
           "https://387f47aeacc8.vps.myjino.ru/api/adminField/getAll"
         );
 
-        const data = getAdminData.data;
-        setData(data);
+        setData(getAdminData.data);
       }
     } catch (err: any | string) {
       toast.error(err);
