@@ -11,7 +11,7 @@ const AdminPage: FC = () => {
   }
 
   interface IGetAdminData {
-    id?: number;
+    id?: number | undefined;
     name: string;
     description: string;
     type: string;
@@ -58,6 +58,17 @@ const AdminPage: FC = () => {
     }
   };
 
+  const removeAdminDataField = async (ident: number | undefined) => {
+    try {
+      await axios.delete(
+        "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
+        { data: { id: ident } }
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Box>
       <Box>
@@ -89,6 +100,35 @@ const AdminPage: FC = () => {
         >
           Создать пост
         </Button>
+
+        <Box>
+          {changeDataForm && (
+            <Box>
+              <TextField />
+              <TextField
+                label="Имя"
+                size="small"
+                variant="outlined"
+                value={name}
+                onChange={handleChange("name")}
+              />
+              <TextField
+                label="Где находится"
+                size="small"
+                variant="outlined"
+                value={description}
+                onChange={handleChange("description")}
+              />
+              <TextField
+                label="Тип"
+                size="small"
+                variant="outlined"
+                value={type}
+                onChange={handleChange("type")}
+              />{" "}
+            </Box>
+          )}
+        </Box>
       </Box>
 
       <Box>
@@ -100,33 +140,9 @@ const AdminPage: FC = () => {
             <Button onClick={(show) => setChangeDataForm(!show)}>
               Редактировать
             </Button>
-            <Box>
-              {changeDataForm && (
-                <Box>
-                  <TextField
-                    label="Имя"
-                    size="small"
-                    variant="outlined"
-                    value={name}
-                    onChange={handleChange("name")}
-                  />
-                  <TextField
-                    label="Где находится"
-                    size="small"
-                    variant="outlined"
-                    value={description}
-                    onChange={handleChange("description")}
-                  />
-                  <TextField
-                    label="Тип"
-                    size="small"
-                    variant="outlined"
-                    value={type}
-                    onChange={handleChange("type")}
-                  />{" "}
-                </Box>
-              )}
-            </Box>
+            <Button onClick={() => removeAdminDataField(item.id)}>
+              Удалить
+            </Button>
           </Box>
         ))}
       </Box>
