@@ -41,13 +41,13 @@ const AdminPage: FC = () => {
 
   const setAdminDataField = async () => {
     try {
-      const postAdminData = await axios.post<IGetAdminData>(
+      const postAdminData = await axios.post(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/create",
         adminData
       );
 
       if (postAdminData.status < 300) {
-        const getAdminData = await axios.get(
+        const getAdminData = await axios.get<IGetAdminData[]>(
           "https://387f47aeacc8.vps.myjino.ru/api/adminField/getAll"
         );
 
