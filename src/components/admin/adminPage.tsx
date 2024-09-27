@@ -77,16 +77,21 @@ const AdminPage: FC = () => {
   };
 
   async function removeAdminDataField(ident: number | undefined) {
+    if (ident === undefined) return;
+
     try {
       const deleteResponse = await axios.delete(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
-        //@ts-ignore
-        { id: ident }
+        { data: { id: ident } }
       );
 
       console.log(deleteResponse);
-    } catch (err) {
-      console.error(err);
+      setData((prevData) => prevData.filter((item) => item.id !== ident));
+    } catch (error: any | string) {
+      console.error(
+        "Ошибка при удалении:",
+        error.response?.data || error.message
+      );
     }
   }
 
