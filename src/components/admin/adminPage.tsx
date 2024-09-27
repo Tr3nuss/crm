@@ -47,9 +47,11 @@ const AdminPage: FC = () => {
     setData(getAdminData.data);
   };
 
+  getAdminDataField();
+
   const setAdminDataField = async () => {
     try {
-      const postAdminData = await axios.post(
+      await axios.post(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/create",
         adminData
       );
