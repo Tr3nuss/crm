@@ -168,7 +168,13 @@ const AdminPage: FC = () => {
                     value={type}
                     onChange={handleChange("type")}
                   />{" "}
-                  <Button onClick={() => updateAdminDataField}>
+                  <Button
+                    onClick={() => {
+                      if (item.id !== undefined) {
+                        updateAdminDataField(item.id);
+                      }
+                    }}
+                  >
                     Подтвердить
                   </Button>
                 </Box>
