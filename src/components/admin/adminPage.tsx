@@ -160,6 +160,9 @@ const AdminPage: FC = () => {
                     value={type}
                     onChange={handleChange("type")}
                   />{" "}
+                  <Button onClick={() => updateAdminDataField}>
+                    Подтвердить
+                  </Button>
                 </Box>
               )}
             </Box>
