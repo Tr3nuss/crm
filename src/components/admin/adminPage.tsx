@@ -76,7 +76,7 @@ const AdminPage: FC = () => {
     }
   };
 
-  const removeAdminDataField = async (ident: number | undefined) => {
+  async function removeAdminDataField(ident: number | undefined) {
     try {
       const deleteResponse = await axios.delete(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
@@ -88,7 +88,7 @@ const AdminPage: FC = () => {
     } catch (err) {
       console.error(err);
     }
-  };
+  }
 
   return (
     <Box>
