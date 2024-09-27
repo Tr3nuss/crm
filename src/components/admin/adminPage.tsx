@@ -82,6 +82,7 @@ const AdminPage: FC = () => {
     try {
       const deleteResponse = await axios.delete(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
+        //@ts-ignore
         { data: { id: ident } }
       );
 
