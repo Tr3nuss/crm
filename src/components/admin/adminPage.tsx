@@ -39,6 +39,10 @@ const AdminPage: FC = () => {
       }));
     };
 
+  const handleChangeDataUpdateForm = () => {
+    setChangeDataForm((prev) => !prev);
+  };
+
   const getAdminDataField = async () => {
     const getAdminData = await axios.get<IGetAdminData[]>(
       "https://387f47aeacc8.vps.myjino.ru/api/adminField/getAll"
@@ -66,7 +70,7 @@ const AdminPage: FC = () => {
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/update",
         {
           id: ident,
-          adminData,
+          ...adminData,
         }
       );
 
@@ -135,9 +139,7 @@ const AdminPage: FC = () => {
             <div>{item.name}</div>
             <div>{item.description}</div>
             <div>{item.id}</div>
-            <Button onClick={(show) => setChangeDataForm(!show)}>
-              Редактировать
-            </Button>
+            <Button onClick={handleChangeDataUpdateForm}>Редактировать</Button>
             <Button onClick={() => removeAdminDataField(item.id)}>
               Удалить
             </Button>
