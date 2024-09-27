@@ -39,20 +39,20 @@ const AdminPage: FC = () => {
       }));
     };
 
+  const getAdminDataField = async () => {
+    const getAdminData = await axios.get<IGetAdminData[]>(
+      "https://387f47aeacc8.vps.myjino.ru/api/adminField/getAll"
+    );
+
+    setData(getAdminData.data);
+  };
+
   const setAdminDataField = async () => {
     try {
       const postAdminData = await axios.post(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/create",
         adminData
       );
-
-      if (postAdminData.status < 300) {
-        const getAdminData = await axios.get<IGetAdminData[]>(
-          "https://387f47aeacc8.vps.myjino.ru/api/adminField/getAll"
-        );
-
-        setData(getAdminData.data);
-      }
     } catch (err: any | string) {
       toast.error(err);
     }
@@ -62,7 +62,8 @@ const AdminPage: FC = () => {
     try {
       await axios.delete(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
-        { params: { id: ident } }
+        //@ts-ignore
+        { id: ident }
       );
     } catch (err) {
       console.error(err);
@@ -100,35 +101,6 @@ const AdminPage: FC = () => {
         >
           Создать пост
         </Button>
-
-        <Box>
-          {changeDataForm && (
-            <Box>
-              <TextField />
-              <TextField
-                label="Имя"
-                size="small"
-                variant="outlined"
-                value={name}
-                onChange={handleChange("name")}
-              />
-              <TextField
-                label="Где находится"
-                size="small"
-                variant="outlined"
-                value={description}
-                onChange={handleChange("description")}
-              />
-              <TextField
-                label="Тип"
-                size="small"
-                variant="outlined"
-                value={type}
-                onChange={handleChange("type")}
-              />{" "}
-            </Box>
-          )}
-        </Box>
       </Box>
 
       <Box>
@@ -143,6 +115,35 @@ const AdminPage: FC = () => {
             <Button onClick={() => removeAdminDataField(item.id)}>
               Удалить
             </Button>
+
+            <Box>
+              {changeDataForm && (
+                <Box>
+                  <TextField />
+                  <TextField
+                    label="Имя"
+                    size="small"
+                    variant="outlined"
+                    value={name}
+                    onChange={handleChange("name")}
+                  />
+                  <TextField
+                    label="Где находится"
+                    size="small"
+                    variant="outlined"
+                    value={description}
+                    onChange={handleChange("description")}
+                  />
+                  <TextField
+                    label="Тип"
+                    size="small"
+                    variant="outlined"
+                    value={type}
+                    onChange={handleChange("type")}
+                  />{" "}
+                </Box>
+              )}
+            </Box>
           </Box>
         ))}
       </Box>
