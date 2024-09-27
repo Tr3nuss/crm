@@ -60,13 +60,31 @@ const AdminPage: FC = () => {
     }
   };
 
+  const updateAdminDataField = async (ident: number) => {
+    try {
+      const updateAdminData = await axios.put(
+        "https://387f47aeacc8.vps.myjino.ru/api/adminField/update",
+        {
+          id: ident,
+          adminData,
+        }
+      );
+
+      console.log(updateAdminData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const removeAdminDataField = async (ident: number | undefined) => {
     try {
-      await axios.delete(
+      const deleteResponse = await axios.delete(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/delete",
         //@ts-ignore
         { id: ident }
       );
+
+      console.log(deleteResponse);
     } catch (err) {
       console.error(err);
     }
@@ -121,7 +139,6 @@ const AdminPage: FC = () => {
             <Box>
               {changeDataForm && (
                 <Box>
-                  <TextField />
                   <TextField
                     label="Имя"
                     size="small"
