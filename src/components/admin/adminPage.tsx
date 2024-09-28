@@ -102,13 +102,23 @@ const AdminPage: FC = () => {
 
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          marginTop: "100px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "30px",
+        }}
+      >
         <TextField
           label="Имя"
           size="small"
           variant="outlined"
           value={name}
           onChange={handleChange("name")}
+          sx={{ width: "300px" }}
         />
         <TextField
           label="Где находится"
@@ -116,6 +126,7 @@ const AdminPage: FC = () => {
           variant="outlined"
           value={description}
           onChange={handleChange("description")}
+          sx={{ width: "300px" }}
         />
         <TextField
           label="Тип"
@@ -123,11 +134,18 @@ const AdminPage: FC = () => {
           variant="outlined"
           value={type}
           onChange={handleChange("type")}
+          sx={{ width: "300px" }}
         />
 
         <Button
           onClick={setAdminDataField}
-          sx={{ "&:hover": { bgcolor: "#1435AD" }, bgcolor: "#057D9F" }}
+          sx={{
+            "&:hover": { bgcolor: "#1435AD" },
+            bgcolor: "#61B7CF",
+            color: "#000",
+            textTransform: "none",
+            width: "200px",
+          }}
         >
           Создать пост
         </Button>
@@ -138,7 +156,7 @@ const AdminPage: FC = () => {
           <Box key={item.id}>
             <div>{item.name}</div>
             <div>{item.description}</div>
-            <div>{item.id}</div>
+            <div>{item.type}</div>
             <Button onClick={handleChangeDataUpdateForm}>Редактировать</Button>
             <Button onClick={() => removeAdminDataField(item.id)}>
               Удалить
