@@ -140,7 +140,7 @@ const AdminPage: FC = () => {
         <Button
           onClick={setAdminDataField}
           sx={{
-            "&:hover": { bgcolor: "#1435AD" },
+            "&:hover": { bgcolor: "#1435AD", color: "#fff" },
             bgcolor: "#61B7CF",
             color: "#000",
             textTransform: "none",
@@ -151,7 +151,7 @@ const AdminPage: FC = () => {
         </Button>
       </Box>
 
-      <Box>
+      <Box sx={{ width: "1520px", margin: "30px auto", display: 'flex', gap: '20px' }}>
         {data.map((item) => (
           <Box key={item.id}>
             <div>{item.name}</div>
