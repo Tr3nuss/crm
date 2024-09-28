@@ -154,9 +154,9 @@ const AdminPage: FC = () => {
       <Box sx={{ width: "1520px", margin: "30px auto", display: 'flex', gap: '20px' }}>
         {data.map((item) => (
           <Box key={item.id}>
-            <div>{item.name}</div>
-            <div>{item.description}</div>
-            <div>{item.type}</div>
+            <div>Имя: {item.name}</div>
+            <div>Местонахождение: {item.description}</div>
+            <div>Тип: {item.type}</div>
             <Button onClick={handleChangeDataUpdateForm}>Редактировать</Button>
             <Button onClick={() => removeAdminDataField(item.id)}>
               Удалить
