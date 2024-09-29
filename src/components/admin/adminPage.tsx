@@ -10,6 +10,12 @@ const AdminPage: FC = () => {
     type?: string;
   }
 
+  // interface IPutAdminData {
+  //   name: string;
+  //   description: string;
+  //   type: string;
+  // }
+
   interface IGetAdminData {
     id?: number | undefined;
     name: string;
@@ -25,19 +31,38 @@ const AdminPage: FC = () => {
     type: "",
   });
 
+  // const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
+  //   name: "",
+  //   description: "",
+  //   type: "",
+  // });
+
+  const { name, description, type } = adminData;
+
   const [data, setData] = useState<IGetAdminData[]>([]);
 
   const [changeDataForm, setChangeDataForm] = useState<boolean>(false);
 
-  const { name, description, type } = adminData;
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAdminData((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  };
 
-  const handleChange =
-    (field: keyof IPostAdminData) => (event: ChangeEvent<HTMLInputElement>) => {
-      setAdminData((prev) => ({
-        ...prev,
-        [field]: event.target.value,
-      }));
-    };
+  const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAdminData((prev) => ({
+      ...prev,
+      description: e.target.value,
+    }));
+  };
+
+  const handleTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setAdminData((prev) => ({
+      ...prev,
+      type: e.target.value,
+    }));
+  };
 
   const handleChangeDataUpdateForm = () => {
     setChangeDataForm((prev) => !prev);
@@ -117,25 +142,22 @@ const AdminPage: FC = () => {
           size="small"
           variant="outlined"
           value={name}
-          onChange={handleChange("name")}
+          onChange={handleNameChange}
           sx={{ width: "300px" }}
         />
         <TextField
-          label="Где находится"
+          label="Описание"
           size="small"
           variant="outlined"
           value={description}
-          onChange={handleChange("description")}
+          onChange={handleDescriptionChange}
           sx={{ width: "300px" }}
         />
-        <TextField
-          label="Тип"
-          size="small"
-          variant="outlined"
-          value={type}
-          onChange={handleChange("type")}
-          sx={{ width: "300px" }}
-        />
+        <select value={type} onChange={handleTypeChange}>
+          <option value="string">Текстовое поле</option>
+          <option value="int">Целое число</option>
+          <option value="float64">Дробное число</option>
+        </select>
 
         <Button
           onClick={setAdminDataField}
@@ -151,12 +173,28 @@ const AdminPage: FC = () => {
         </Button>
       </Box>
 
-      <Box sx={{ width: "1520px", margin: "30px auto", display: 'flex', gap: '20px' }}>
+      <Box
+        sx={{
+          width: "1520px",
+          margin: "30px auto",
+          display: "flex",
+          gap: "20px",
+          flexWrap: "wrap",
+        }}
+      >
         {data.map((item) => (
-          <Box key={item.id}>
-            <div>Имя: {item.name}</div>
-            <div>Местонахождение: {item.description}</div>
-            <div>Тип: {item.type}</div>
+          <Box
+            key={item.id}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>{name}</div>
+            <div>{item.name}</div>
+            <div>{item.type}</div>
+            <div>{item.description}</div>
             <Button onClick={handleChangeDataUpdateForm}>Редактировать</Button>
             <Button onClick={() => removeAdminDataField(item.id)}>
               Удалить
@@ -170,22 +208,18 @@ const AdminPage: FC = () => {
                     size="small"
                     variant="outlined"
                     value={name}
-                    onChange={handleChange("name")}
                   />
                   <TextField
-                    label="Где находится"
+                    label="Описание"
                     size="small"
                     variant="outlined"
                     value={description}
-                    onChange={handleChange("description")}
                   />
-                  <TextField
-                    label="Тип"
-                    size="small"
-                    variant="outlined"
-                    value={type}
-                    onChange={handleChange("type")}
-                  />{" "}
+                  <select>
+                    <option value="string">Текстовое поле</option>
+                    <option value="int">Целое число</option>
+                    <option value="float64">Дробное число</option>
+                  </select>
                   <Button
                     onClick={() => {
                       if (item.id !== undefined) {
