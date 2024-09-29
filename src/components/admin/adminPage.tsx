@@ -158,6 +158,9 @@ const AdminPage: FC = () => {
           onChange={handleTypeChange}
           style={{ width: "300px", height: "40px" }}
         >
+          <option value="" selected>
+            Выберите тип
+          </option>
           <option value="string">Текстовое поле</option>
           <option value="int">Целое число</option>
           <option value="float64">Дробное число</option>
@@ -193,15 +196,33 @@ const AdminPage: FC = () => {
               margin: "30px auto",
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
             }}
           >
             <div>{name}</div>
             <div>{item.name}</div>
             <div>{item.type}</div>
             <div>{item.description}</div>
-            <Button onClick={handleChangeDataUpdateForm}>Редактировать</Button>
-            <Button onClick={() => removeAdminDataField(item.id)}>
+            <Button
+              sx={{
+                bgcolor: "#0871A4",
+                textTransform: "none",
+                color: "#fff",
+                "&:hover": { bgcolor: "#0871A4" },
+              }}
+              onClick={handleChangeDataUpdateForm}
+            >
+              Редактировать
+            </Button>
+            <Button
+              sx={{
+                bgcolor: "#F30021",
+                textTransform: "none",
+                color: "#fff",
+                "&:hover": { bgcolor: "#F30021" },
+              }}
+              onClick={() => removeAdminDataField(item.id)}
+            >
               Удалить
             </Button>
 
