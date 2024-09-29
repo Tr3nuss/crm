@@ -141,7 +141,7 @@ const AdminPage: FC = () => {
           label="Имя"
           size="small"
           variant="outlined"
-          value={name}
+          defaultValue={name}
           onChange={handleNameChange}
           sx={{ width: "300px" }}
         />
@@ -153,7 +153,11 @@ const AdminPage: FC = () => {
           onChange={handleDescriptionChange}
           sx={{ width: "300px" }}
         />
-        <select value={type} onChange={handleTypeChange}>
+        <select
+          value={type}
+          onChange={handleTypeChange}
+          style={{ width: "300px", height: "40px" }}
+        >
           <option value="string">Текстовое поле</option>
           <option value="int">Целое число</option>
           <option value="float64">Дробное число</option>
@@ -175,9 +179,8 @@ const AdminPage: FC = () => {
 
       <Box
         sx={{
-          width: "1520px",
-          margin: "30px auto",
           display: "flex",
+          flexDirection: "column",
           gap: "20px",
           flexWrap: "wrap",
         }}
@@ -186,6 +189,8 @@ const AdminPage: FC = () => {
           <Box
             key={item.id}
             sx={{
+              width: "1520px",
+              margin: "30px auto",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -215,7 +220,7 @@ const AdminPage: FC = () => {
                     variant="outlined"
                     value={description}
                   />
-                  <select>
+                  <select style={{ width: "300px", height: "40px" }}>
                     <option value="string">Текстовое поле</option>
                     <option value="int">Целое число</option>
                     <option value="float64">Дробное число</option>
