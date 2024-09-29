@@ -205,6 +205,7 @@ const AdminPage: FC = () => {
             <div>{item.description}</div>
             <Button
               sx={{
+                width: '300px',
                 bgcolor: "#0871A4",
                 textTransform: "none",
                 color: "#fff",
@@ -216,6 +217,7 @@ const AdminPage: FC = () => {
             </Button>
             <Button
               sx={{
+                width: '300px',
                 bgcolor: "#F30021",
                 textTransform: "none",
                 color: "#fff",
