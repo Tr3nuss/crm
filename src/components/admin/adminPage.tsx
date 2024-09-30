@@ -10,11 +10,11 @@ const AdminPage: FC = () => {
     type?: string;
   }
 
-  interface IPutAdminData {
-    name: string;
-    description: string;
-    type: string;
-  }
+  // interface IPutAdminData {
+  //   name: string;
+  //   description: string;
+  //   type: string;
+  // }
 
   interface IGetAdminData {
     id?: number | undefined;
@@ -32,17 +32,15 @@ const AdminPage: FC = () => {
     type: "",
   });
 
-  const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
-    name: "",
-    description: "",
-    type: "",
-  });
+  // const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
+  //   name: "",
+  //   description: "",
+  //   type: "",
+  // });
 
   const { name, description, type } = adminData;
 
   const [data, setData] = useState<IGetAdminData[]>([]);
-
-  const [changeDataForm, setChangeDataForm] = useState<boolean>(false);
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAdminData((prev) => ({
@@ -65,12 +63,12 @@ const AdminPage: FC = () => {
     }));
   };
 
-  const handleNameUpdate = (e: ChangeEvent<HTMLInputElement>) => {};
+  // const handleNameUpdate = (e: ChangeEvent<HTMLInputElement>) => {};
 
   const [updateItemId, setUpdateItemId] = useState<number | null>(null);
 
   const handleChangeDataUpdateForm = (id: any) => {
-    setChangeDataForm((prevId) => (prevId === id ? null : id));
+    setUpdateItemId((prevId) => (prevId === id ? null : id));
   };
 
   const getAdminDataField = async () => {
