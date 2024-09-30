@@ -10,11 +10,11 @@ const AdminPage: FC = () => {
     type?: string;
   }
 
-  // interface IPutAdminData {
-  //   name: string;
-  //   description: string;
-  //   type: string;
-  // }
+  interface IPutAdminData {
+    new_name: string;
+    new_description: string;
+    new_type: string;
+  }
 
   interface IGetAdminData {
     id?: number | undefined;
@@ -32,6 +32,8 @@ const AdminPage: FC = () => {
     type: "",
   });
 
+  const { name, description, type } = adminData;
+
   const [editId, setEditId] = useState<number | null>(null);
 
   const handleChangeDataUpdateForm = (id: number) => {
@@ -42,13 +44,13 @@ const AdminPage: FC = () => {
     }
   };
 
-  // const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
-  //   name: "",
-  //   description: "",
-  //   type: "",
-  // });
+  const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
+    new_name: "",
+    new_description: "",
+    new_type: "",
+  });
 
-  const { name, description, type } = adminData;
+  const { new_name, new_description, new_type } = updateAdminData;
 
   const [data, setData] = useState<IGetAdminData[]>([]);
 
@@ -68,6 +70,27 @@ const AdminPage: FC = () => {
 
   const handleTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setAdminData((prev) => ({
+      ...prev,
+      type: e.target.value,
+    }));
+  };
+
+  const handleUpdateNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUpdateAdminData((prev) => ({
+      ...prev,
+      name: e.target.value,
+    }));
+  };
+
+  const handleUpdateDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUpdateAdminData((prev) => ({
+      ...prev,
+      description: e.target.value,
+    }));
+  };
+
+  const handleUpdateTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setUpdateAdminData((prev) => ({
       ...prev,
       type: e.target.value,
     }));
@@ -97,15 +120,15 @@ const AdminPage: FC = () => {
   //@ts-ignore
   const updateAdminDataField = async (ident: number) => {
     try {
-      const updateAdminData = await axios.put(
+      const updateAdminDataForm = await axios.put(
         "https://387f47aeacc8.vps.myjino.ru/api/adminField/update",
         {
           id: ident,
-          ...adminData,
+          ...updateAdminData,
         }
       );
 
-      console.log(updateAdminData);
+      console.log(updateAdminDataForm);
     } catch (err) {
       console.error(err);
     }
@@ -229,19 +252,33 @@ const AdminPage: FC = () => {
               >
                 <TextField
                   label="Имя"
-                  defaultValue={item.name}
-                  // onChange={(e) => {
-
-                  // }}
+                  defaultValue={new_name}
+                  onChange={handleUpdateNameChange}
                 />
                 <TextField
                   label="Описание"
-                  defaultValue={item.description}
-                  // onChange={(e) => {
-
-                  // }}
+                  defaultValue={new_description}
+                  onChange={handleUpdateDescriptionChange}
                 />
-                <Button>Сохранить изменения</Button>
+
+                <select
+                  value={new_type}
+                  onChange={handleUpdateTypeChange}
+                  style={{ width: "300px", height: "40px" }}
+                >
+                  <option value="" selected>
+                    Выберите тип
+                  </option>
+                  <option value="string">Текстовое поле</option>
+                  <option value="int">Целое число</option>
+                  <option value="float64">Дробное число</option>
+                </select>
+
+                <Button
+                  onClick={() => item.id && updateAdminDataField(item.id)}
+                >
+                  Подтвердить
+                </Button>
               </Box>
             )}
             <Button
