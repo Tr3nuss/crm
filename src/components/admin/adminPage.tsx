@@ -10,15 +10,16 @@ const AdminPage: FC = () => {
     type?: string;
   }
 
-  // interface IPutAdminData {
-  //   name: string;
-  //   description: string;
-  //   type: string;
-  // }
+  interface IPutAdminData {
+    name: string;
+    description: string;
+    type: string;
+  }
 
   interface IGetAdminData {
     id?: number | undefined;
     name: string;
+    translit: string;
     description: string;
     type: string;
     createdAt: string;
@@ -31,11 +32,11 @@ const AdminPage: FC = () => {
     type: "",
   });
 
-  // const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
-  //   name: "",
-  //   description: "",
-  //   type: "",
-  // });
+  const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
+    name: "",
+    description: "",
+    type: "",
+  });
 
   const { name, description, type } = adminData;
 
@@ -64,8 +65,12 @@ const AdminPage: FC = () => {
     }));
   };
 
-  const handleChangeDataUpdateForm = () => {
-    setChangeDataForm((prev) => !prev);
+  const handleNameUpdate = (e: ChangeEvent<HTMLInputElement>) => {};
+
+  const [updateItemId, setUpdateItemId] = useState<number | null>(null);
+
+  const handleChangeDataUpdateForm = (id: any) => {
+    setChangeDataForm((prevId) => (prevId === id ? null : id));
   };
 
   const getAdminDataField = async () => {
@@ -199,13 +204,13 @@ const AdminPage: FC = () => {
               justifyContent: "space-around",
             }}
           >
-            <div>{name}</div>
             <div>{item.name}</div>
+            <div>{item.translit}</div>
             <div>{item.type}</div>
             <div>{item.description}</div>
             <Button
               sx={{
-                width: '300px',
+                width: "300px",
                 bgcolor: "#0871A4",
                 textTransform: "none",
                 color: "#fff",
@@ -217,7 +222,7 @@ const AdminPage: FC = () => {
             </Button>
             <Button
               sx={{
-                width: '300px',
+                width: "300px",
                 bgcolor: "#F30021",
                 textTransform: "none",
                 color: "#fff",
@@ -228,38 +233,43 @@ const AdminPage: FC = () => {
               Удалить
             </Button>
 
-            <Box>
-              {changeDataForm && (
-                <Box>
-                  <TextField
-                    label="Имя"
-                    size="small"
-                    variant="outlined"
-                    value={name}
-                  />
-                  <TextField
-                    label="Описание"
-                    size="small"
-                    variant="outlined"
-                    value={description}
-                  />
-                  <select style={{ width: "300px", height: "40px" }}>
-                    <option value="string">Текстовое поле</option>
-                    <option value="int">Целое число</option>
-                    <option value="float64">Дробное число</option>
-                  </select>
-                  <Button
-                    onClick={() => {
-                      if (item.id !== undefined) {
-                        updateAdminDataField(item.id);
-                      }
-                    }}
-                  >
-                    Подтвердить
-                  </Button>
-                </Box>
-              )}
-            </Box>
+            {updateItemId === item.id ? (
+              <Box>
+                <TextField
+                  label="Имя"
+                  size="small"
+                  variant="outlined"
+                  value={name}
+                />
+                <TextField
+                  label="Описание"
+                  size="small"
+                  variant="outlined"
+                  value={description}
+                />
+                <select style={{ width: "300px", height: "40px" }}>
+                  <option value="string">Текстовое поле</option>
+                  <option value="int">Целое число</option>
+                  <option value="float64">Дробное число</option>
+                </select>
+                <Button
+                  onClick={() => {
+                    if (item.id !== undefined) {
+                      updateAdminDataField(item.id);
+                    }
+                  }}
+                >
+                  Подтвердить
+                </Button>
+              </Box>
+            ) : (
+              <Box>
+                <div>{item.name}</div>
+                <div>{item.translit}</div>
+                <div>{item.type}</div>
+                <div>{item.description}</div>
+              </Box>
+            )}
           </Box>
         ))}
       </Box>
