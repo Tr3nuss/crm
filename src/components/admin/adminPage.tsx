@@ -32,6 +32,16 @@ const AdminPage: FC = () => {
     type: "",
   });
 
+  const [editId, setEditId] = useState<number | null>(null);
+
+  const handleChangeDataUpdateForm = (id: number) => {
+    if (editId === id) {
+      setEditId(null);
+    } else {
+      setEditId(id);
+    }
+  };
+
   // const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
   //   name: "",
   //   description: "",
@@ -63,14 +73,6 @@ const AdminPage: FC = () => {
     }));
   };
 
-  // const handleNameUpdate = (e: ChangeEvent<HTMLInputElement>) => {};
-
-  const [updateItemId, setUpdateItemId] = useState<number | null>(null);
-
-  const handleChangeDataUpdateForm = (id: any) => {
-    setUpdateItemId((prevId) => (prevId === id ? null : id));
-  };
-
   const getAdminDataField = async () => {
     const getAdminData = await axios.get<IGetAdminData[]>(
       "https://387f47aeacc8.vps.myjino.ru/api/adminField/getAll"
@@ -92,6 +94,7 @@ const AdminPage: FC = () => {
     }
   };
 
+  //@ts-ignore
   const updateAdminDataField = async (ident: number) => {
     try {
       const updateAdminData = await axios.put(
@@ -214,10 +217,33 @@ const AdminPage: FC = () => {
                 color: "#fff",
                 "&:hover": { bgcolor: "#0871A4" },
               }}
-              onClick={handleChangeDataUpdateForm}
+              //@ts-ignore
+              onClick={() => handleChangeDataUpdateForm(item.id)}
             >
               Редактировать
             </Button>
+
+            {editId === item.id && (
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+              >
+                <TextField
+                  label="Имя"
+                  defaultValue={item.name}
+                  // onChange={(e) => {
+
+                  // }}
+                />
+                <TextField
+                  label="Описание"
+                  defaultValue={item.description}
+                  // onChange={(e) => {
+
+                  // }}
+                />
+                <Button>Сохранить изменения</Button>
+              </Box>
+            )}
             <Button
               sx={{
                 width: "300px",
@@ -230,44 +256,6 @@ const AdminPage: FC = () => {
             >
               Удалить
             </Button>
-
-            {updateItemId === item.id ? (
-              <Box>
-                <TextField
-                  label="Имя"
-                  size="small"
-                  variant="outlined"
-                  value={name}
-                />
-                <TextField
-                  label="Описание"
-                  size="small"
-                  variant="outlined"
-                  value={description}
-                />
-                <select style={{ width: "300px", height: "40px" }}>
-                  <option value="string">Текстовое поле</option>
-                  <option value="int">Целое число</option>
-                  <option value="float64">Дробное число</option>
-                </select>
-                <Button
-                  onClick={() => {
-                    if (item.id !== undefined) {
-                      updateAdminDataField(item.id);
-                    }
-                  }}
-                >
-                  Подтвердить
-                </Button>
-              </Box>
-            ) : (
-              <Box>
-                <div>{item.name}</div>
-                <div>{item.translit}</div>
-                <div>{item.type}</div>
-                <div>{item.description}</div>
-              </Box>
-            )}
           </Box>
         ))}
       </Box>
