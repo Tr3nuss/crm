@@ -12,6 +12,7 @@ const AdminPage: FC = () => {
 
   interface IPutAdminData {
     new_name: string;
+    new_traslit: string;
     new_description: string;
     new_type: string;
   }
@@ -46,6 +47,7 @@ const AdminPage: FC = () => {
 
   const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
     new_name: "",
+    new_traslit: '',
     new_description: "",
     new_type: "",
   });
