@@ -47,7 +47,7 @@ const AdminPage: FC = () => {
 
   const [updateAdminData, setUpdateAdminData] = useState<IPutAdminData>({
     new_name: "",
-    new_traslit: '',
+    new_traslit: "",
     new_description: "",
     new_type: "",
   });
@@ -257,6 +257,18 @@ const AdminPage: FC = () => {
                 >
                   Редактировать
                 </Button>
+                <Button
+                  sx={{
+                    width: "300px",
+                    bgcolor: "#F30021",
+                    textTransform: "none",
+                    color: "#fff",
+                    "&:hover": { bgcolor: "#F30021" },
+                  }}
+                  onClick={() => removeAdminDataField(item.id)}
+                >
+                  Удалить
+                </Button>
               </Box>
             )}
 
@@ -289,24 +301,34 @@ const AdminPage: FC = () => {
                 </select>
 
                 <Button
-                  onClick={() => item.id && updateAdminDataField(item.id)}
+                  sx={{
+                    width: "150px",
+                    bgcolor: "#0871A4",
+                    textTransform: "none",
+                    color: "#fff",
+                    "&:hover": { bgcolor: "#0871A4" },
+                  }}
+                  onClick={() => {
+                    item.id && updateAdminDataField(item.id), setEditId(null);
+                  }}
                 >
                   Подтвердить
                 </Button>
+
+                <Button
+                  sx={{
+                    width: "150px",
+                    bgcolor: "#F30021",
+                    textTransform: "none",
+                    color: "#fff",
+                    "&:hover": { bgcolor: "#F30021" },
+                  }}
+                  onClick={() => setEditId(null)}
+                >
+                  Отмена
+                </Button>
               </Box>
             )}
-            <Button
-              sx={{
-                width: "300px",
-                bgcolor: "#F30021",
-                textTransform: "none",
-                color: "#fff",
-                "&:hover": { bgcolor: "#F30021" },
-              }}
-              onClick={() => removeAdminDataField(item.id)}
-            >
-              Удалить
-            </Button>
           </Box>
         ))}
       </Box>
