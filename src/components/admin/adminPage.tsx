@@ -293,7 +293,7 @@ const AdminPage: FC = () => {
                 />
 
                 <select
-                  value={new_type}
+                  defaultValue={new_type}
                   onChange={handleUpdateTypeChange}
                   style={{ width: "300px", height: "40px" }}
                 >
