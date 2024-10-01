@@ -282,21 +282,18 @@ const AdminPage: FC = () => {
                 <TextField
                   label="Имя"
                   size="small"
-                  defaultValue={name}
                   value={new_name}
                   onChange={handleUpdateNameChange}
                 />
                 <TextField
                   label="Описание"
                   size="small"
-                  defaultValue={description}
                   value={new_description}
                   onChange={handleUpdateDescriptionChange}
                 />
 
                 <select
                   value={new_type}
-                  defaultValue={type}
                   onChange={handleUpdateTypeChange}
                   style={{ width: "300px", height: "40px" }}
                 >
