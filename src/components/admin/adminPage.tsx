@@ -56,6 +56,11 @@ const AdminPage: FC = () => {
 
   const [data, setData] = useState<IGetAdminData[]>([]);
 
+  const SortAdminDataById = () => {
+    //@ts-ignore
+    setData([...data].sort((x, y) => x.id - y.id));
+  };
+
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAdminData((prev) => ({
       ...prev,
@@ -277,18 +282,21 @@ const AdminPage: FC = () => {
                 <TextField
                   label="Имя"
                   size="small"
-                  defaultValue={new_name}
+                  defaultValue={name}
+                  value={new_name}
                   onChange={handleUpdateNameChange}
                 />
                 <TextField
                   label="Описание"
                   size="small"
-                  defaultValue={new_description}
+                  defaultValue={description}
+                  value={new_description}
                   onChange={handleUpdateDescriptionChange}
                 />
 
                 <select
                   value={new_type}
+                  defaultValue={type}
                   onChange={handleUpdateTypeChange}
                   style={{ width: "300px", height: "40px" }}
                 >
@@ -309,7 +317,9 @@ const AdminPage: FC = () => {
                     "&:hover": { bgcolor: "#0871A4" },
                   }}
                   onClick={() => {
-                    item.id && updateAdminDataField(item.id), setEditId(null);
+                    item.id && updateAdminDataField(item.id),
+                      setEditId(null),
+                      SortAdminDataById();
                   }}
                 >
                   Подтвердить
