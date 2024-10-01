@@ -282,13 +282,13 @@ const AdminPage: FC = () => {
                 <TextField
                   label="Имя"
                   size="small"
-                  value={new_name}
+                  defaultValue={new_name}
                   onChange={handleUpdateNameChange}
                 />
                 <TextField
                   label="Описание"
                   size="small"
-                  value={new_description}
+                  defaultValue={new_description}
                   onChange={handleUpdateDescriptionChange}
                 />
 
