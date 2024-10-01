@@ -228,8 +228,30 @@ const AdminPage: FC = () => {
               justifyContent: "space-around",
             }}
           >
-            {editId === item.id ? (
-              <Box sx={{ display: "flex", gap: "10px" }}>
+            <Box>
+              <div>{item.name}</div>
+              <div>{item.translit}</div>
+              <div>{item.type}</div>
+              <div>{item.description}</div>
+              <Button
+                sx={{
+                  width: "300px",
+                  bgcolor: "#0871A4",
+                  textTransform: "none",
+                  color: "#fff",
+                  "&:hover": { bgcolor: "#0871A4" },
+                }}
+                //@ts-ignore
+                onClick={() => handleChangeDataUpdateForm(item.id)}
+              >
+                Редактировать
+              </Button>
+            </Box>
+
+            {editId === item.id && (
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+              >
                 <TextField
                   label="Имя"
                   size="small"
@@ -262,28 +284,7 @@ const AdminPage: FC = () => {
                   Подтвердить
                 </Button>
               </Box>
-            ) : (
-              <Box>
-                <div>{item.name}</div>
-                <div>{item.translit}</div>
-                <div>{item.type}</div>
-                <div>{item.description}</div>
-                <Button
-                  sx={{
-                    width: "300px",
-                    bgcolor: "#0871A4",
-                    textTransform: "none",
-                    color: "#fff",
-                    "&:hover": { bgcolor: "#0871A4" },
-                  }}
-                  //@ts-ignore
-                  onClick={() => handleChangeDataUpdateForm(item.id)}
-                >
-                  Редактировать
-                </Button>
-              </Box>
             )}
-
             <Button
               sx={{
                 width: "300px",
