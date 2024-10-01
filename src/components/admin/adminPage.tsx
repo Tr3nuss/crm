@@ -228,26 +228,6 @@ const AdminPage: FC = () => {
               justifyContent: "space-around",
             }}
           >
-            <Box>
-              <div>{item.name}</div>
-              <div>{item.translit}</div>
-              <div>{item.type}</div>
-              <div>{item.description}</div>
-              <Button
-                sx={{
-                  width: "300px",
-                  bgcolor: "#0871A4",
-                  textTransform: "none",
-                  color: "#fff",
-                  "&:hover": { bgcolor: "#0871A4" },
-                }}
-                //@ts-ignore
-                onClick={() => handleChangeDataUpdateForm(item.id)}
-              >
-                Редактировать
-              </Button>
-            </Box>
-
             {editId === item.id ? (
               <Box sx={{ display: "flex", gap: "10px" }}>
                 <TextField
@@ -303,6 +283,7 @@ const AdminPage: FC = () => {
                 </Button>
               </Box>
             )}
+
             <Button
               sx={{
                 width: "300px",
