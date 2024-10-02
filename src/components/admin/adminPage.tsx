@@ -58,7 +58,12 @@ const AdminPage: FC = () => {
 
   const SortAdminDataById = () => {
     //@ts-ignore
-    setData([...data].sort((x, y) => x.id - y.id));
+    setData(
+      [...data].sort(
+        (x, y) =>
+          new Date(y.createdAt).getTime() - new Date(x.createdAt).getTime()
+      )
+    );
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -109,7 +114,6 @@ const AdminPage: FC = () => {
     );
 
     setData(getAdminData.data);
-    console.log(getAdminData)
   };
 
   getAdminDataField();
