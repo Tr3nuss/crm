@@ -1,7 +1,8 @@
 import { Box, TextField, Button } from "@mui/material";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AdminPage: FC = () => {
   interface IPostAdminData {
@@ -25,6 +26,14 @@ const AdminPage: FC = () => {
     type: string;
     createdAt: string;
     updatedAt: string;
+  }
+
+  const navigate = useNavigate();
+
+  let token: string | null = localStorage.getItem("O-auth-token");
+
+  if (!token) {
+    navigate("/");
   }
 
   const [adminData, setAdminData] = useState<IPostAdminData>({
@@ -114,7 +123,9 @@ const AdminPage: FC = () => {
     setData(getAdminData.data);
   };
 
-  getAdminDataField();
+  useEffect(() => {
+    getAdminDataField();
+  }, []);
 
   const setAdminDataField = async () => {
     try {
@@ -248,6 +259,7 @@ const AdminPage: FC = () => {
                   justifyContent: "space-around",
                 }}
               >
+                <div>{item.id}</div>
                 <div>{item.name}</div>
                 <div>{item.translit}</div>
                 <div>{item.type}</div>
@@ -267,7 +279,7 @@ const AdminPage: FC = () => {
                 </Button>
                 <Button
                   sx={{
-                    width: "300px",
+                    width: "200px",
                     bgcolor: "#F30021",
                     textTransform: "none",
                     color: "#fff",
@@ -281,7 +293,13 @@ const AdminPage: FC = () => {
             )}
 
             {editId === item.id && (
-              <Box sx={{ display: "flex", gap: "10px" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                }}
+              >
                 <TextField
                   label="Имя"
                   size="small"
@@ -298,7 +316,7 @@ const AdminPage: FC = () => {
                 <select
                   defaultValue={new_type}
                   onChange={handleUpdateTypeChange}
-                  style={{ width: "300px", height: "40px" }}
+                  style={{ width: "200px", height: "40px" }}
                 >
                   <option value="" selected>
                     Выберите тип
