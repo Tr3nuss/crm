@@ -295,6 +295,8 @@ const AdminPage: FC = () => {
             {editId === item.id && (
               <Box
                 sx={{
+                  width: "1520px",
+                  margin: "30px auto",
                   display: "flex",
                   justifyContent: "space-around",
                   alignItems: "center",
