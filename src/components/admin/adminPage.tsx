@@ -109,6 +109,7 @@ const AdminPage: FC = () => {
     );
 
     setData(getAdminData.data);
+    console.log(getAdminData)
   };
 
   getAdminDataField();
