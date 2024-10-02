@@ -2,7 +2,6 @@ import { Box, TextField, Button } from "@mui/material";
 import { ChangeEvent, FC, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const AdminPage: FC = () => {
   interface IPostAdminData {
@@ -27,8 +26,6 @@ const AdminPage: FC = () => {
     createdAt: string;
     updatedAt: string;
   }
-
-  const navigate = useNavigate();
 
   let token: string | null = localStorage.getItem("O-auth-token");
 
