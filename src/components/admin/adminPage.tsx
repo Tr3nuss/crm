@@ -62,7 +62,7 @@ const AdminPage: FC = () => {
     }
 
     setData(
-      [...data].sort((x, y) => {
+      data.sort((x, y) => {
         //@ts-ignore
         return x.id - y.id;
       })
@@ -142,12 +142,6 @@ const AdminPage: FC = () => {
           ...updateAdminData,
         }
       );
-
-      if (updateAdminDataForm.status < 300) {
-        setTimeout(() => {
-          SortAdminDataById();
-        }, 200);
-      }
 
       console.log(updateAdminDataForm);
     } catch (err) {
@@ -328,7 +322,9 @@ const AdminPage: FC = () => {
                     "&:hover": { bgcolor: "#0871A4" },
                   }}
                   onClick={() => {
-                    item.id && updateAdminDataField(item.id), setEditId(null);
+                    item.id && updateAdminDataField(item.id),
+                      setEditId(null),
+                      SortAdminDataById();
                   }}
                 >
                   Подтвердить
