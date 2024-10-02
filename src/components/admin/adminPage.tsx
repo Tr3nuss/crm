@@ -326,7 +326,6 @@ const AdminPage: FC = () => {
                 </select>
 
                 <Button
-                  disabled={!new_name || !new_description || !new_type}
                   sx={{
                     width: "150px",
                     bgcolor: "#0871A4",
