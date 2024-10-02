@@ -57,12 +57,16 @@ const AdminPage: FC = () => {
   const [data, setData] = useState<IGetAdminData[]>([]);
 
   const SortAdminDataById = () => {
-    //@ts-ignore
+    if (!Array.isArray(data)) {
+      return;
+    }
+
     setData(
-      [...data].sort(
-        (x, y) =>
-          new Date(y.createdAt).getTime() - new Date(x.createdAt).getTime()
-      )
+      [...data].sort((x, y) => {
+        const dateX = new Date(x.createdAt).getTime();
+        const dateY = new Date(y.createdAt).getTime();
+        return dateY - dateX; // Сортировка по убыванию
+      })
     );
   };
 
