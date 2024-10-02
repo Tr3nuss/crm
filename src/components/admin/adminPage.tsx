@@ -143,6 +143,10 @@ const AdminPage: FC = () => {
         }
       );
 
+      if (updateAdminDataForm.status < 300) {
+        SortAdminDataById();
+      }
+
       console.log(updateAdminDataForm);
     } catch (err) {
       console.error(err);
