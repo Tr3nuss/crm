@@ -60,13 +60,8 @@ const AdminPage: FC = () => {
     if (!Array.isArray(data)) {
       return;
     }
-
-    setData(
-      data.sort((x, y) => {
-        //@ts-ignore
-        return x.id - y.id;
-      })
-    );
+    //@ts-ignore
+    setData((d) => d.sort((x, y) => x.id - y.id));
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
