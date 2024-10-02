@@ -144,7 +144,9 @@ const AdminPage: FC = () => {
       );
 
       if (updateAdminDataForm.status < 300) {
-        SortAdminDataById();
+        setTimeout(() => {
+          SortAdminDataById();
+        }, 200);
       }
 
       console.log(updateAdminDataForm);
@@ -326,9 +328,7 @@ const AdminPage: FC = () => {
                     "&:hover": { bgcolor: "#0871A4" },
                   }}
                   onClick={() => {
-                    item.id && updateAdminDataField(item.id),
-                      setEditId(null),
-                      SortAdminDataById();
+                    item.id && updateAdminDataField(item.id), setEditId(null);
                   }}
                 >
                   Подтвердить
