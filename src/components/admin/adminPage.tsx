@@ -33,7 +33,7 @@ const AdminPage: FC = () => {
   let token: string | null = localStorage.getItem("O-auth-token");
 
   if (!token) {
-    navigate("/");
+    window.location.href = "/";
   }
 
   const [adminData, setAdminData] = useState<IPostAdminData>({
