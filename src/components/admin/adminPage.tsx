@@ -63,9 +63,8 @@ const AdminPage: FC = () => {
 
     setData(
       [...data].sort((x, y) => {
-        const dateX = new Date(x.createdAt).getTime();
-        const dateY = new Date(y.createdAt).getTime();
-        return dateY - dateX; // Сортировка по убыванию
+        //@ts-ignore
+        return x.id - y.id;
       })
     );
   };
